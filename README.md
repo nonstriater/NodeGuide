@@ -120,10 +120,13 @@ Simple cookie-based session middleware
 
 ### 网络安全
 
-csurf    CSRF(cross-site request forgery)  token 创造和验证
-cors   （cross-origin resource sharing） 跨域请求
-helmet  安全性组件：xss跨站脚本，脚本注入，非安全请求
+[csurf](https://github.com/expressjs/csurf)    CSRF(cross-site request forgery)  token 创造和验证
 
+[cors](https://github.com/expressjs/cors)   （cross-origin resource sharing） 跨域请求
+A node.js package that provides an Express/Connect middleware to enable Cross Origin Resource Sharing (CORS) with various options
+
+[helmet](https://github.com/helmetjs/helmet)  安全性组件：xss跨站脚本，脚本注入，非安全请求
+Help secure Express apps with various HTTP headers
 
 
 ## 数据库处理
