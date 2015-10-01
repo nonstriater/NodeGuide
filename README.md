@@ -7,45 +7,29 @@
 ## 锤子
 
 [async](https://github.com/caolan/async)      异步控制
+
 [bcrypt](https://github.com/ncb000gt/node.bcrypt.js)     跨平台的文件加密工具
 
-
 [lodash](https://github.com/lodash/lodash/)     js工具库 
-[compression](https://github.com/expressjs/compression)  压缩的中间件
 
+[compression](https://github.com/expressjs/compression)  压缩的中间件
 
 [after](https://github.com/Raynos/after)
 All the flow control you'll ever need
 
-
 [errorhandle](https://github.com/expressjs/errorhandler)
 错误处理中间件
 
-
 [debug](https://github.com/visionmedia/debug)
+
 [node-inspector](https://github.com/node-inspector/node-inspector)
 
 [depd](https://github.com/dougwilson/nodejs-depd)  deprecate all the things
 
-
 [on-finished](https://github.com/jshttp/on-finished)  Execute a callback when a request closes, finishes, or errors
-
-
 
 [istanbul](https://github.com/gotwarlost/istanbul)
  a JS code coverage tool written in JS
-
-
-
-### views
-
-[jade](https://github.com/jadejs/jade) 
-Jade - robust, elegant, feature rich template engine for Node.js 
-
-[ejs](https://github.com/tj/ejs)
-Embedded JavaScript templates for node
-
-[loader](https://github.com/JacksonTian/loader)      静态资源加载工具
 
 
 ### 字符串处理
@@ -72,6 +56,8 @@ Turn an Express-style path string such as /user/:name into a regular expression.
 
 ## HTTP
 
+### req && resp
+
 [accepts](https://github.com/jshttp/accepts)   http(s) header Accept 设置和解析
 [content-disposition](https://github.com/jshttp/content-disposition)  http(s) header Content-Disposition 设置和解析
 [content-type](https://github.com/jshttp/content-type) http(s) header Content-Type 设置和解析
@@ -88,7 +74,6 @@ Infer the content-type of a request
 Override HTTP verbs
 
 [finalhandler](https://github.com/pillarjs/finalhandler)  final http responder
-
 
 [body-parser](https://github.com/expressjs/body-parser) multipart body 解析
 
@@ -111,6 +96,7 @@ Create a session middleware with the given options
 
 
 [passport](https://github.com/jaredhanson/passport)    登录认证，较少模块耦合
+
 [passport-github](https://github.com/jaredhanson/passport-github) github授权
 
 
@@ -122,21 +108,35 @@ Determine address of proxied request
 
 ### cookie 
 
-cookie
-cookie-signature
-cookie-parser 
-cookie-session
+[cookie](https://github.com/jshttp/cookie） cookie serialization and parsing for node.js
+
+[cookie-signature](https://github.com/tj/node-cookie-signature) cookie signing
+
+[cookie-parser](https://github.com/expressjs/cookie-parser)  cookie parsing middleware
+
+[cookie-session](https://github.com/expressjs/cookie-session)
+Simple cookie-based session middleware
 
 
-## 数据处理
+### 网络安全
 
-connect-mongodb
-connect-redis  redis存储session数据
-redis
-online
+csurf    CSRF(cross-site request forgery)  token 创造和验证
+cors   （cross-origin resource sharing） 跨域请求
+helmet  安全性组件：xss跨站脚本，脚本注入，非安全请求
 
 
-## 日志
+
+## 数据库处理
+
+connect-mongodb](https://github.com/treygriffith/connect-mongodb)
+SessionStorage for connect's session middleware
+
+[connect-redis](https://github.com/tj/connect-redis)  redis存储session数据
+
+[redis](https://github.com/NodeRedis/node_redis) redis client for nodejs
+
+
+## 日志 && 监控
 
 ### [morgan](https://github.com/expressjs/morgan)
 HTTP request log 中间件
@@ -145,18 +145,32 @@ HTTP request log 中间件
 
 ## 测试
 
-mocha
-should
-supertest
+mocha](https://github.com/mochajs/mocha)
+mocha - simple, flexible, fun javascript test framework for node.js & the browser. (BDD, TDD, QUnit styles via interfaces)
+
+[should](https://github.com/shouldjs/should.js)
+BDD style assertions for node.js -- test framework agnostic
+
+[supertest](https://github.com/visionmedia/supertest)
+Super-agent driven library for testing node.js HTTP servers using a fluent API
+
 [fresh](https://github.com/jshttp/fresh) HTTP request freshness testing
 
 
 
-## 网络安全
+### views
 
-csurf    CSRF(cross-site request forgery)  token 创造和验证
-cors   （cross-origin resource sharing） 跨域请求
-helmet  安全性组件：xss跨站脚本，脚本注入，非安全请求
+[jade](https://github.com/jadejs/jade) 
+Jade - robust, elegant, feature rich template engine for Node.js 
+
+[ejs](https://github.com/tj/ejs)
+Embedded JavaScript templates for node
+
+[loader](https://github.com/JacksonTian/loader)      静态资源加载工具
+
+
+
+
 
 
 
