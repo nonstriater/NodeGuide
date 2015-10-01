@@ -1,88 +1,80 @@
 
 
 
-作为一个node初学者，发现上来就要跟一堆的node开源库打交道，很多库也不知道是干什么的。这里整理一份常用的node库，以及他们的简单介绍和使用。
+作为一个node初学者，发现上来就要跟一堆的node开源库打交道。这里整理一份常用的node库，以及他们的简单介绍和使用。
 
 
 ## 锤子
 
-async      异步控制
-bcrypt     跨平台的文件加密工具
-loader      资源加载工具
-passport    登录认证，较少模块耦合
-passport-github  https://github.com/jaredhanson/passport-github github授权
-lodash    js工具库  https://github.com/lodash/lodash/
-compression  压缩的中间件
-body-parser   https://github.com/expressjs/body-parser multipart body 解析
-
-errorhandler  错误处理中间件 https://github.com/expressjs/errorhandler
+[async](https://github.com/caolan/async)      异步控制
+[bcrypt](https://github.com/ncb000gt/node.bcrypt.js)     跨平台的文件加密工具
 
 
-connect-busboy
-content-flatten
-
-
-debug  https://github.com/visionmedia/debug
-node-inspector  https://github.com/node-inspector/node-inspector
-
-[depd](https://github.com/dougwilson/nodejs-depd)  deprecate all the things
-[escape-html](https://github.com/component/escape-html)  string html转换 
-
-var escape = require('escape-html');
-var html = escape('foo & bar');
-// -> foo &amp; bar
-
-
-finalhandler  https://github.com/pillarjs/finalhandler  final http responder
-
-
-
-[on-finished](https://github.com/jshttp/on-finished)  Execute a callback when a request closes, finishes, or errors
-
-[path-to-regexp](https://github.com/pillarjs/path-to-regexp)
-Turn an Express-style path string such as /user/:name into a regular expression.
-
-
-
-[qs](https://github.com/hapijs/qs)
-A querystring parser with nesting support
-
-
-
-[serve-static](https://github.com/expressjs/serve-static)
-Create a new middleware function to serve files from within a given root directory
-
-
+[lodash](https://github.com/lodash/lodash/)     js工具库 
+[compression](https://github.com/expressjs/compression)  压缩的中间件
 
 
 [after](https://github.com/Raynos/after)
 All the flow control you'll ever need
 
 
+[errorhandle](https://github.com/expressjs/errorhandler)
+错误处理中间件
+
+
+[debug](https://github.com/visionmedia/debug)
+[node-inspector](https://github.com/node-inspector/node-inspector)
+
+[depd](https://github.com/dougwilson/nodejs-depd)  deprecate all the things
+
+
+[on-finished](https://github.com/jshttp/on-finished)  Execute a callback when a request closes, finishes, or errors
+
+
 
 [istanbul](https://github.com/gotwarlost/istanbul)
  a JS code coverage tool written in JS
 
+
+
+### views
+
+[jade](https://github.com/jadejs/jade) 
+Jade - robust, elegant, feature rich template engine for Node.js 
+
+[ejs](https://github.com/tj/ejs)
+Embedded JavaScript templates for node
+
+[loader](https://github.com/JacksonTian/loader)      静态资源加载工具
+
+
+### 字符串处理
+
+[qs](https://github.com/hapijs/qs)
+A querystring parser with nesting support
+
 [marked](https://github.com/chjj/marked)  
 markdown 解析器
 
-method-override
-jade
-ejs
-express-session
-morgan
-multiparty
 
-vhost   虚拟域名主机。 ip下可以部署多个不同域名站点
-[proxy-addr](https://github.com/jshttp/proxy-addr) 
-Determine address of proxied request
+###[escape-html](https://github.com/component/escape-html)  string html转换 
+
+```
+var escape = require('escape-html');
+var html = escape('foo & bar');
+// -> foo &amp; bar
+```
+
+[path-to-regexp](https://github.com/pillarjs/path-to-regexp)
+Turn an Express-style path string such as /user/:name into a regular expression.
+
 
 
 ## HTTP
 
-accepts  https://github.com/jshttp/accepts   http(s) header Accept 设置和解析
-content-disposition  https://github.com/jshttp/content-disposition  http(s) header Content-Disposition 设置和解析
-content-type  、https://github.com/jshttp/content-type http(s) header Content-Type 设置和解析
+[accepts](https://github.com/jshttp/accepts)   http(s) header Accept 设置和解析
+[content-disposition](https://github.com/jshttp/content-disposition)  http(s) header Content-Disposition 设置和解析
+[content-type](https://github.com/jshttp/content-type) http(s) header Content-Type 设置和解析
 
 [range-parser](https://github.com/jshttp/range-parser) 
 Range header field parser
@@ -90,13 +82,50 @@ Range header field parser
 [type-is](https://github.com/jshttp/type-is)
 Infer the content-type of a request
 
-methods   https://github.com/jshttp/methods   http method 小写
+[methods](https://github.com/jshttp/methods)   http method 小写
+
+[method-override](https://github.com/expressjs/method-override)
+Override HTTP verbs
+
+[finalhandler](https://github.com/pillarjs/finalhandler)  final http responder
+
+
+[body-parser](https://github.com/expressjs/body-parser) multipart body 解析
 
 [parseurl] https://github.com/pillarjs/parseurl  
 Parse the URL of the given request object
 
 [send](https://github.com/pillarjs/send)
 Send is a library for streaming files from the file system as a http response supporting partial responses (Ranges), conditional-GET negotiation
+
+[serve-static](https://github.com/expressjs/serve-static)
+Create a new middleware function to serve files from within a given root directory
+
+
+[multiparty](https://github.com/andrewrk/node-multiparty/)
+A node.js module for parsing multipart-form data requests which supports streams2
+
+
+[express-session](https://github.com/expressjs/session)
+Create a session middleware with the given options
+
+
+[passport](https://github.com/jaredhanson/passport)    登录认证，较少模块耦合
+[passport-github](https://github.com/jaredhanson/passport-github) github授权
+
+
+[vhost](https://github.com/expressjs/vhost)   虚拟域名主机。 ip下可以部署多个不同域名站点
+
+[proxy-addr](https://github.com/jshttp/proxy-addr) 
+Determine address of proxied request
+
+
+### cookie 
+
+cookie
+cookie-signature
+cookie-parser 
+cookie-session
 
 
 ## 数据处理
@@ -121,12 +150,6 @@ should
 supertest
 [fresh](https://github.com/jshttp/fresh) HTTP request freshness testing
 
-## cookie 
-
-cookie
-cookie-signature
-cookie-parser 
-cookie-session
 
 
 ## 网络安全
