@@ -59,7 +59,9 @@ Turn an Express-style path string such as /user/:name into a regular expression.
 ### req && resp
 
 [accepts](https://github.com/jshttp/accepts)   http(s) header Accept 设置和解析
+
 [content-disposition](https://github.com/jshttp/content-disposition)  http(s) header Content-Disposition 设置和解析
+
 [content-type](https://github.com/jshttp/content-type) http(s) header Content-Type 设置和解析
 
 [range-parser](https://github.com/jshttp/range-parser) 
@@ -77,8 +79,7 @@ Override HTTP verbs
 
 [body-parser](https://github.com/expressjs/body-parser) multipart body 解析
 
-[parseurl] https://github.com/pillarjs/parseurl  
-Parse the URL of the given request object
+[parseurl](https://github.com/pillarjs/parseurl) Parse the URL of the given request object
 
 [send](https://github.com/pillarjs/send)
 Send is a library for streaming files from the file system as a http response supporting partial responses (Ranges), conditional-GET negotiation
@@ -108,7 +109,7 @@ Determine address of proxied request
 
 ### cookie 
 
-[cookie](https://github.com/jshttp/cookie） cookie serialization and parsing for node.js
+[cookie](https://github.com/jshttp/cookie) cookie serialization and parsing for node.js
 
 [cookie-signature](https://github.com/tj/node-cookie-signature) cookie signing
 
@@ -131,7 +132,7 @@ Help secure Express apps with various HTTP headers
 
 ## 数据库处理
 
-connect-mongodb](https://github.com/treygriffith/connect-mongodb)
+[connect-mongodb](https://github.com/treygriffith/connect-mongodb)
 SessionStorage for connect's session middleware
 
 [connect-redis](https://github.com/tj/connect-redis)  redis存储session数据
@@ -148,7 +149,7 @@ HTTP request log 中间件
 
 ## 测试
 
-mocha](https://github.com/mochajs/mocha)
+[mocha](https://github.com/mochajs/mocha)
 mocha - simple, flexible, fun javascript test framework for node.js & the browser. (BDD, TDD, QUnit styles via interfaces)
 
 [should](https://github.com/shouldjs/should.js)
@@ -161,7 +162,7 @@ Super-agent driven library for testing node.js HTTP servers using a fluent API
 
 
 
-### views
+## views
 
 [jade](https://github.com/jadejs/jade) 
 Jade - robust, elegant, feature rich template engine for Node.js 
@@ -172,6 +173,9 @@ Embedded JavaScript templates for node
 [loader](https://github.com/JacksonTian/loader)      静态资源加载工具
 
 
+# 联系
+
+[移动开发小冉](http://weibo.com/ranwj)
 
 
 
