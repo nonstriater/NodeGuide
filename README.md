@@ -8,11 +8,16 @@
 
 [async](https://github.com/caolan/async)      异步控制
 
+[eventproxy](https://github.com/JacksonTian/eventproxy)  An implementation of task/event based asynchronous pattern
+
+
 [bcrypt](https://github.com/ncb000gt/node.bcrypt.js)     跨平台的文件加密工具
 
 [lodash](https://github.com/lodash/lodash/)     js工具库 
 
 [compression](https://github.com/expressjs/compression)  压缩的中间件
+
+[crypto-js](https://github.com/brix/crypto-js) JavaScript library of crypto standards
 
 [after](https://github.com/Raynos/after)
 All the flow control you'll ever need
@@ -31,8 +36,15 @@ All the flow control you'll ever need
 [istanbul](https://github.com/gotwarlost/istanbul)
  a JS code coverage tool written in JS
 
+[cron](https://github.com/ncb000gt/node-cron)   cron 定时任务
+
+[nodemailer](https://github.com/andris9/Nodemailer) 邮件发送服务
+
+[qrcode](https://github.com/soldair/node-qrcode)  二维码生成器
 
 ### 字符串处理
+
+[validator](https://github.com/chriso/validator.js)  字符串校验
 
 [qs](https://github.com/hapijs/qs)
 A querystring parser with nesting support
@@ -129,8 +141,12 @@ A node.js package that provides an Express/Connect middleware to enable Cross Or
 [helmet](https://github.com/helmetjs/helmet)  安全性组件：xss跨站脚本，脚本注入，非安全请求
 Help secure Express apps with various HTTP headers
 
+[captchagen](https://github.com/contra/captchagen) 验证码生成器
+
 
 ## 数据库处理
+
+[mysql](https://github.com/felixge/node-mysql)  mysql协议的node实现
 
 [connect-mongodb](https://github.com/treygriffith/connect-mongodb)
 SessionStorage for connect's session middleware
@@ -171,6 +187,8 @@ Jade - robust, elegant, feature rich template engine for Node.js
 Embedded JavaScript templates for node
 
 [loader](https://github.com/JacksonTian/loader)      静态资源加载工具
+
+[canvas](https://github.com/Automattic/node-canvas) Node canvas is a Cairo backed Canvas implementation for NodeJS
 
 
 # 联系
