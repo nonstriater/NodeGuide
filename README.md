@@ -244,7 +244,7 @@ app.use(logger('dev'));
 ```
 
 预定义的格式有：combined,common,dev,short,tiny，比如dev:
-![morgan_dev](./assets/morgan_dev)
+![morgan_dev](./assets/morgan_dev.png)
 
 
 [debug](https://github.com/visionmedia/debug)  对console.log 封装，支持多种颜色输出
