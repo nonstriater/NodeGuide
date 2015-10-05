@@ -33,17 +33,15 @@ var ciphertext = CryptoJS.AES.encrypt('my message', 'secret key 123');
 var bytes  = CryptoJS.AES.decrypt(ciphertext.toString(), 'secret key 123');
 ```
 
-
-、
 [moment](https://github.com/moment/moment) 时间格式处理
-[官方文档](http://momentjs.com/)
+
 ```
 moment().format('MMMM Do YYYY, h:mm:ss a'); // October 5th 2015, 7:48:22 pm
 moment("20111031", "YYYYMMDD").fromNow(); // 4 years ago
 moment().subtract(10, 'days').calendar(); // 09/25/2015
 moment().format('lll');  // Oct 5, 2015 7:49 PM
 ```
-
+更多使用参考 [官方文档](http://momentjs.com/)
 
 [nodemailer](https://github.com/andris9/Nodemailer) 邮件发送服务
 ```
@@ -80,6 +78,15 @@ transporter.sendMail(mailOptions, function(error, info){
 ```
 
 
+[utils-merge](https://github.com/jaredhanson/utils-merge) 合并2个对象的属性
+```
+var a = { foo: 'bar' }
+  , b = { bar: 'baz' };
+
+merge(a, b);
+// => { foo: 'bar', bar: 'baz' }
+```
+
 [qrcode](https://github.com/soldair/node-qrcode)  二维码生成器
 
 [pm2](https://github.com/Unitech/pm2) Production process manager for Node.js applications with a built-in load balance
@@ -106,17 +113,61 @@ All the flow control you'll ever need
 
 [on-finished](https://github.com/jshttp/on-finished)  Execute a callback when a request closes, finishes, or errors
 
+
 ## 字符串处理
 
 [validator](https://github.com/chriso/validator.js)  字符串校验
+```
+validator.isEmail('foo@bar.com'); //=> true
+validator.isWhitespace('    \t\r\n');// => true
+```
+
 
 [qs](https://github.com/hapijs/qs)
 A querystring parser with nesting support
+```
+var obj = Qs.parse('a=c');    // { a: 'c' }
+var str = Qs.stringify(obj);  // 'a=c'
+```
 
-[marked](https://github.com/chjj/marked)  
-markdown 解析器
+[marked](https://github.com/chjj/marked) markdown 解析器
+
+同步调用方式
+```
+fs.readFile(path, 'utf8', function(err, str){
+    if (err) return fn(err);
+    try {
+      var html = md(str);
+      html = html.replace(/\{([^}]+)\}/g, function(_, name){
+        return options[name] || '';
+      });
+      fn(null, html);
+    } catch(err) {
+      fn(err);
+    }
+  });
+```
+
+异步调用方式
+```
+// Using async version of marked
+marked(markdownString, function (err, content) {
+  if (err) throw err;
+  console.log(content);
+});
+
+```
+
 
 [node-uuid](https://github.com/broofa/node-uuid)  Generate RFC-compliant UUIDs in JavaScript
+```
+// Generate a v1 (time-based) id
+uuid.v1(); // -> '6c84fb90-12c4-11e1-840d-7b25c5ee775a'
+
+// Generate a v4 (random) id
+uuid.v4(); // -> '110ec58a-a0f2-4ac4-8393-c866d813b8d1'
+```
+
 
 ###[escape-html](https://github.com/component/escape-html)  string html转换 
 
@@ -128,6 +179,12 @@ var html = escape('foo & bar');
 
 [path-to-regexp](https://github.com/pillarjs/path-to-regexp)
 Turn an Express-style path string such as /user/:name into a regular expression.
+```
+var keys = []
+var re = pathToRegexp('/foo/:bar', keys)
+// re = /^\/foo\/([^\/]+?)\/?$/i
+// keys = [{ name: 'bar', prefix: '/', delimiter: '/', optional: false, repeat: false, pattern: '[^\\/]+?' }]
+```
 
 
 [multiline](https://github.com/sindresorhus/multiline) Multiline strings in JavaScript
@@ -163,6 +220,14 @@ var str = multiline(function(){/*
 ### req && resp
 
 [request](https://github.com/request/request)  Simplified HTTP request client
+```
+var request = require('request');
+request('http://www.google.com', function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    console.log(body) // Show the HTML for the Google homepage.
+  }
+})
+```
 
 [accepts](https://github.com/jshttp/accepts)   http(s) header Accept 设置和解析
 
@@ -173,19 +238,42 @@ var str = multiline(function(){/*
 [range-parser](https://github.com/jshttp/range-parser) 
 Range header field parser
 
-[type-is](https://github.com/jshttp/type-is)
-Infer the content-type of a request
+[parseurl](https://github.com/pillarjs/parseurl) Parse the URL of the given request object
 
-[methods](https://github.com/jshttp/methods)   http method 小写
-
-[method-override](https://github.com/expressjs/method-override)
-Override HTTP verbs
-
-[finalhandler](https://github.com/pillarjs/finalhandler)  final http responder
+[methods](https://github.com/jshttp/methods)   保证http method 都是小写字符串
 
 [body-parser](https://github.com/expressjs/body-parser) multipart body 解析
 
-[parseurl](https://github.com/pillarjs/parseurl) Parse the URL of the given request object
+
+[multiparty](https://github.com/andrewrk/node-multiparty/)
+A node.js module for parsing multipart-form data requests which supports streams2
+解析content-type为multipart/form-data的request
+```
+http.createServer(function(req, res) {
+  if (req.url === '/upload' && req.method === 'POST') {
+    // parse a file upload
+    var form = new multiparty.Form();
+
+    form.parse(req, function(err, fields, files) {
+      res.writeHead(200, {'content-type': 'text/plain'});
+      res.write('received upload:\n\n');
+      res.end(util.inspect({fields: fields, files: files}));
+    });
+
+    return;
+  }
+  // show a file upload form
+  res.writeHead(200, {'content-type': 'text/html'});
+  res.end(
+    '<form action="/upload" enctype="multipart/form-data" method="post">'+
+    '<input type="text" name="title"><br>'+
+    '<input type="file" name="upload" multiple="multiple"><br>'+
+    '<input type="submit" value="Upload">'+
+    '</form>'
+  );
+}).listen(8080);
+```
+
 
 [send](https://github.com/pillarjs/send)
 Send is a library for streaming files from the file system as a http response supporting partial responses (Ranges), conditional-GET negotiation
@@ -193,24 +281,14 @@ Send is a library for streaming files from the file system as a http response su
 [serve-static](https://github.com/expressjs/serve-static)
 Create a new middleware function to serve files from within a given root directory
 
+[type-is](https://github.com/jshttp/type-is)
+Infer the content-type of a request
 
-[multiparty](https://github.com/andrewrk/node-multiparty/)
-A node.js module for parsing multipart-form data requests which supports streams2
+[method-override](https://github.com/expressjs/method-override)
+Override HTTP verbs
 
+[finalhandler](https://github.com/pillarjs/finalhandler)  final http responder
 
-[express-session](https://github.com/expressjs/session)
-Create a session middleware with the given options
-
-
-[passport](https://github.com/jaredhanson/passport)    登录认证，较少模块耦合
-
-[passport-github](https://github.com/jaredhanson/passport-github) github授权
-
-
-[vhost](https://github.com/expressjs/vhost)   虚拟域名主机。 ip下可以部署多个不同域名站点
-
-[proxy-addr](https://github.com/jshttp/proxy-addr) 
-Determine address of proxied request
 
 
 ### cookie 
@@ -234,6 +312,24 @@ Simple cookie-based session middleware
 app.use(cookieSession({ secret: 'manny is cool' }));
 req.session.count
 ```
+
+
+### session && 授权
+
+[express-session](https://github.com/expressjs/session) Express session中间件
+Create a session middleware with the given options
+
+[passport](https://github.com/jaredhanson/passport)    登录认证，较少模块耦合
+
+[passport-github](https://github.com/jaredhanson/passport-github) github授权
+
+[vhost](https://github.com/expressjs/vhost)   虚拟域名主机。 ip下可以部署多个不同域名站点
+
+
+[proxy-addr](https://github.com/jshttp/proxy-addr) 
+Determine address of proxied request
+
+
 
 ### 网络安全
 
@@ -270,9 +366,6 @@ SessionStorage for connect's session middleware
 
 ## views
 
-[jade](https://github.com/jadejs/jade) 
-Jade - robust, elegant, feature rich template engine for Node.js 
-
 [ejs](https://github.com/tj/ejs)
 Embedded JavaScript templates for node
 
@@ -283,6 +376,10 @@ Embedded JavaScript templates for node
 <% } %>
 <% include footer %>
 ```
+
+
+[jade](https://github.com/jadejs/jade) 
+Jade - robust, elegant, feature rich template engine for Node.js 
 
 
 [loader](https://github.com/JacksonTian/loader)      静态资源加载工具
@@ -311,9 +408,7 @@ Super-agent driven library for testing node.js HTTP servers using a fluent API
 [istanbul](https://github.com/gotwarlost/istanbul) 代码测试覆盖率
 
 
-[gruntjs](http://gruntjs.com/)  
-
-基于node的自动化任务运行器。对于一些重复的任务比如压缩，编译，单元测试，代码检查，打包发布，可以使用grunt处理
+[gruntjs](http://gruntjs.com/)  基于node的自动化任务运行器。对于一些重复的任务比如压缩，编译，单元测试，代码检查，打包发布，可以使用grunt处理
 
 
 
@@ -334,9 +429,18 @@ app.use(logger('dev'));
 ![morgan_dev](./assets/morgan_dev.png)
 
 
-[debug](https://github.com/visionmedia/debug)  对console.log 封装，支持多种颜色输出
-
 [colors](https://github.com/Marak/colors.js)  get colors in your node.js console
+```
+var colors = require('colors');
+
+console.log('hello'.green); // outputs green text
+console.log('i like cake and pies'.underline.red) // outputs red underlined text
+console.log('inverse the color'.inverse); // inverses the color
+console.log('OMG Rainbows!'.rainbow); // rainbow
+console.log('Run the trap'.trap); // Drops the bass
+```
+
+[debug](https://github.com/visionmedia/debug)  对console.log 封装，支持多种颜色输出
 
 [node-inspector](https://github.com/node-inspector/node-inspector)
 
