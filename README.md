@@ -6,40 +6,105 @@
 
 ## 锤子
 
-[async](https://github.com/caolan/async)      异步控制
-
-[eventproxy](https://github.com/JacksonTian/eventproxy)  An implementation of task/event based asynchronous pattern
-
 [utility](https://github.com/node-modules/utility) A collection of useful utilities
+```
+utils.md5('@Python发烧友');
+utils.sha1('苏千', 'base64');
+utils.hmac('sha1', 'I am a key', 'hello world');
+utils.base64decode('5L2g5aW977-l', true); 
+```
 
 [bcrypt](https://github.com/ncb000gt/node.bcrypt.js)     跨平台的文件加密工具
-
-[lodash](https://github.com/lodash/lodash/)     js工具库 
-
-[compression](https://github.com/expressjs/compression)  压缩的中间件
+```
+var bcrypt = require('bcrypt');
+bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash('B4c0/\/', salt, function(err, hash) {
+        // Store hash in your password DB.
+    });
+});
+```
 
 [crypto-js](https://github.com/brix/crypto-js) JavaScript library of crypto standards
+```
+// Encrypt
+var ciphertext = CryptoJS.AES.encrypt('my message', 'secret key 123');
 
-[after](https://github.com/Raynos/after)
-All the flow control you'll ever need
+// Decrypt
+var bytes  = CryptoJS.AES.decrypt(ciphertext.toString(), 'secret key 123');
+```
 
-[errorhandle](https://github.com/expressjs/errorhandler)
-错误处理中间件
 
+、
 [moment](https://github.com/moment/moment) 时间格式处理
+[官方文档](http://momentjs.com/)
+```
+moment().format('MMMM Do YYYY, h:mm:ss a'); // October 5th 2015, 7:48:22 pm
+moment("20111031", "YYYYMMDD").fromNow(); // 4 years ago
+moment().subtract(10, 'days').calendar(); // 09/25/2015
+moment().format('lll');  // Oct 5, 2015 7:49 PM
+```
 
-[depd](https://github.com/dougwilson/nodejs-depd)  deprecate all the things
-
-[on-finished](https://github.com/jshttp/on-finished)  Execute a callback when a request closes, finishes, or errors
-
-[cron](https://github.com/ncb000gt/node-cron)   cron 定时任务
 
 [nodemailer](https://github.com/andris9/Nodemailer) 邮件发送服务
+```
+// create reusable transporter object using SMTP transport
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'gmail.user@gmail.com',
+        pass: 'userpass'
+    }
+});
+
+// NB! No need to recreate the transporter object. You can use
+// the same transporter object for all e-mails
+
+// setup e-mail data with unicode symbols
+var mailOptions = {
+    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
+    to: 'bar@blurdybloop.com, baz@blurdybloop.com', // list of receivers
+    subject: 'Hello ✔', // Subject line
+    text: 'Hello world ✔', // plaintext body
+    html: '<b>Hello world ✔</b>' // html body
+};
+
+// send mail with defined transport object
+transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+        return console.log(error);
+    }
+    console.log('Message sent: ' + info.response);
+
+});
+
+```
+
 
 [qrcode](https://github.com/soldair/node-qrcode)  二维码生成器
 
 [pm2](https://github.com/Unitech/pm2) Production process manager for Node.js applications with a built-in load balance
 
+[cron](https://github.com/ncb000gt/node-cron)   cron 定时任务
+
+[compression](https://github.com/expressjs/compression)  压缩的中间件
+
+[errorhandle](https://github.com/expressjs/errorhandler)
+错误处理中间件
+
+[depd](https://github.com/dougwilson/nodejs-depd)  deprecate all the things
+
+
+[lodash](https://github.com/lodash/lodash/)     js工具库 
+[lodash api](https://lodash.com/docs)
+
+[async](https://github.com/caolan/async)      异步控制
+
+[eventproxy](https://github.com/JacksonTian/eventproxy)  An implementation of task/event based asynchronous pattern
+
+[after](https://github.com/Raynos/after)
+All the flow control you'll ever need
+
+[on-finished](https://github.com/jshttp/on-finished)  Execute a callback when a request closes, finishes, or errors
 
 ## 字符串处理
 
@@ -155,10 +220,20 @@ Determine address of proxied request
 [cookie-signature](https://github.com/tj/node-cookie-signature) cookie signing
 
 [cookie-parser](https://github.com/expressjs/cookie-parser)  cookie parsing middleware
+```
+app.use(cookieParser('my secret here'));
+res.cookie('remember', 1, { maxAge: minute });
+res.clearCookie('remember');
+```
+
 
 [cookie-session](https://github.com/expressjs/cookie-session)
 Simple cookie-based session middleware
 
+```
+app.use(cookieSession({ secret: 'manny is cool' }));
+req.session.count
+```
 
 ### 网络安全
 
@@ -201,6 +276,15 @@ Jade - robust, elegant, feature rich template engine for Node.js
 [ejs](https://github.com/tj/ejs)
 Embedded JavaScript templates for node
 
+```
+<% include error_header %>
+<% if (user) { %>
+    <h2><%= user.name %></h2>
+<% } %>
+<% include footer %>
+```
+
+
 [loader](https://github.com/JacksonTian/loader)      静态资源加载工具
 
 [canvas](https://github.com/Automattic/node-canvas)  图像图片处理库
@@ -235,7 +319,7 @@ Super-agent driven library for testing node.js HTTP servers using a fluent API
 
 ## 日志 && 监控
 
-### [morgan](https://github.com/expressjs/morgan)
+[morgan](https://github.com/expressjs/morgan)
 HTTP request log 中间件
 
 ```
@@ -244,6 +328,9 @@ app.use(logger('dev'));
 ```
 
 预定义的格式有：combined,common,dev,short,tiny，比如dev:
+```
+:method :url :status :response-time ms - :res[content-length]
+```
 ![morgan_dev](./assets/morgan_dev.png)
 
 
