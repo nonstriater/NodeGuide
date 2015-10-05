@@ -10,6 +10,7 @@
 
 [eventproxy](https://github.com/JacksonTian/eventproxy)  An implementation of task/event based asynchronous pattern
 
+[utility](https://github.com/node-modules/utility) A collection of useful utilities
 
 [bcrypt](https://github.com/ncb000gt/node.bcrypt.js)     跨平台的文件加密工具
 
@@ -25,16 +26,11 @@ All the flow control you'll ever need
 [errorhandle](https://github.com/expressjs/errorhandler)
 错误处理中间件
 
-[debug](https://github.com/visionmedia/debug)
-
-[node-inspector](https://github.com/node-inspector/node-inspector)
+[moment](https://github.com/moment/moment) 时间格式处理
 
 [depd](https://github.com/dougwilson/nodejs-depd)  deprecate all the things
 
 [on-finished](https://github.com/jshttp/on-finished)  Execute a callback when a request closes, finishes, or errors
-
-[istanbul](https://github.com/gotwarlost/istanbul)
- a JS code coverage tool written in JS
 
 [cron](https://github.com/ncb000gt/node-cron)   cron 定时任务
 
@@ -42,7 +38,10 @@ All the flow control you'll ever need
 
 [qrcode](https://github.com/soldair/node-qrcode)  二维码生成器
 
-### 字符串处理
+[pm2](https://github.com/Unitech/pm2) Production process manager for Node.js applications with a built-in load balance
+
+
+## 字符串处理
 
 [validator](https://github.com/chriso/validator.js)  字符串校验
 
@@ -52,6 +51,7 @@ A querystring parser with nesting support
 [marked](https://github.com/chjj/marked)  
 markdown 解析器
 
+[node-uuid](https://github.com/broofa/node-uuid)  Generate RFC-compliant UUIDs in JavaScript
 
 ###[escape-html](https://github.com/component/escape-html)  string html转换 
 
@@ -65,10 +65,39 @@ var html = escape('foo & bar');
 Turn an Express-style path string such as /user/:name into a regular expression.
 
 
+[multiline](https://github.com/sindresorhus/multiline) Multiline strings in JavaScript
+
+before:
+```
+var str = '' +
+'<!doctype html>' +
+'<html>' +
+'   <body>' +
+'       <h1>❤ unicorns</h1>' +
+'   </body>' +
+'</html>' +
+'';
+```
+
+after:
+```
+var str = multiline(function(){/*
+<!doctype html>
+<html>
+    <body>
+        <h1>❤ unicorns</h1>
+    </body>
+</html>
+*/});
+
+```
+
 
 ## HTTP
 
 ### req && resp
+
+[request](https://github.com/request/request)  Simplified HTTP request client
 
 [accepts](https://github.com/jshttp/accepts)   http(s) header Accept 设置和解析
 
@@ -133,6 +162,8 @@ Simple cookie-based session middleware
 
 ### 网络安全
 
+[xss](https://github.com/leizongmin/js-xss) 根据白名单过滤HTML(防止XSS攻击)
+
 [csurf](https://github.com/expressjs/csurf)    CSRF(cross-site request forgery)  token 创造和验证
 
 [cors](https://github.com/expressjs/cors)   （cross-origin resource sharing） 跨域请求
@@ -141,25 +172,39 @@ A node.js package that provides an Express/Connect middleware to enable Cross Or
 [helmet](https://github.com/helmetjs/helmet)  安全性组件：xss跨站脚本，脚本注入，非安全请求
 Help secure Express apps with various HTTP headers
 
-[captchagen](https://github.com/contra/captchagen) 验证码生成器
+[captchagen](https://github.com/contra/captchagen) 验证码生成器，依赖canvas库
 
 
-## 数据库处理
+## 数据(库)处理
 
 [mysql](https://github.com/felixge/node-mysql)  mysql协议的node实现
 
 [connect-mongodb](https://github.com/treygriffith/connect-mongodb)
 SessionStorage for connect's session middleware
 
+[mongoose](https://github.com/Automattic/mongoose)  MongoDB object modeling designed to work in an asynchronous environment 
+
 [connect-redis](https://github.com/tj/connect-redis)  redis存储session数据
 
 [redis](https://github.com/NodeRedis/node_redis) redis client for nodejs
 
+[ioredis](https://github.com/luin/ioredis) A robust, performance-focused and full-featured Redis client for Node and io.js
 
-## 日志 && 监控
+[memory-cache](https://github.com/ptarjan/node-cache)A simple in-memory cache for nodejs
 
-### [morgan](https://github.com/expressjs/morgan)
-HTTP request log 中间件
+
+## views
+
+[jade](https://github.com/jadejs/jade) 
+Jade - robust, elegant, feature rich template engine for Node.js 
+
+[ejs](https://github.com/tj/ejs)
+Embedded JavaScript templates for node
+
+[loader](https://github.com/JacksonTian/loader)      静态资源加载工具
+
+[canvas](https://github.com/Automattic/node-canvas)  图像图片处理库
+Node canvas is a Cairo backed Canvas implementation for NodeJS
 
 
 
@@ -177,18 +222,36 @@ Super-agent driven library for testing node.js HTTP servers using a fluent API
 [fresh](https://github.com/jshttp/fresh) HTTP request freshness testing
 
 
+[coveralls](https://github.com/nickmerwin/node-coveralls)  代码测试覆盖率
 
-## views
+[istanbul](https://github.com/gotwarlost/istanbul) 代码测试覆盖率
 
-[jade](https://github.com/jadejs/jade) 
-Jade - robust, elegant, feature rich template engine for Node.js 
 
-[ejs](https://github.com/tj/ejs)
-Embedded JavaScript templates for node
+[gruntjs](http://gruntjs.com/)  
 
-[loader](https://github.com/JacksonTian/loader)      静态资源加载工具
+基于node的自动化任务运行器。对于一些重复的任务比如压缩，编译，单元测试，代码检查，打包发布，可以使用grunt处理
 
-[canvas](https://github.com/Automattic/node-canvas) Node canvas is a Cairo backed Canvas implementation for NodeJS
+
+
+## 日志 && 监控
+
+### [morgan](https://github.com/expressjs/morgan)
+HTTP request log 中间件
+
+```
+var logger = require('morgan');
+app.use(logger('dev'));
+```
+
+预定义的格式有：combined,common,dev,short,tiny，比如dev:
+![morgan_dev](./assets/morgan_dev)
+
+
+[debug](https://github.com/visionmedia/debug)  对console.log 封装，支持多种颜色输出
+
+[colors](https://github.com/Marak/colors.js)  get colors in your node.js console
+
+[node-inspector](https://github.com/node-inspector/node-inspector)
 
 
 # 联系
