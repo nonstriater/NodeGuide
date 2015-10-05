@@ -3,9 +3,23 @@
 
 作为一个node初学者，发现上来就要跟一堆的node开源库打交道。这里整理一份常用的node库，以及他们的简单介绍和使用。
 
++ 工具
+    - 普通工具
+    - 流程控制
++ HTTP 
+    - req && resp
+    - cookie 
+    - session && 授权
+    - 网络安全
++ 数据(库)处理
++ views
++ 测试
++ 错误处理、日志、 监控  
 
-## 锤子
 
+## 工具
+
+### 普通工具
 [utility](https://github.com/node-modules/utility) A collection of useful utilities
 ```
 utils.md5('@Python发烧友');
@@ -101,14 +115,13 @@ new CronJob('00 30 11 * * 1-5', function() {
 
 [depd](https://github.com/dougwilson/nodejs-depd)  deprecate all the things
 
-
 [qrcode](https://github.com/soldair/node-qrcode)  二维码生成器
 
 
 [lodash](https://github.com/lodash/lodash/)     js工具库 
 [lodash api](https://lodash.com/docs)
 
-
+### 流程控制
 [async](https://github.com/caolan/async)      异步控制
 
 [eventproxy](https://github.com/JacksonTian/eventproxy)  An implementation of task/event based asynchronous pattern
@@ -417,7 +430,7 @@ Super-agent driven library for testing node.js HTTP servers using a fluent API
 
 
 
-## 日志 && 监控 && 错误处理
+## 错误处理、日志、 监控
 
 [morgan](https://github.com/expressjs/morgan)
 HTTP request log 中间件
