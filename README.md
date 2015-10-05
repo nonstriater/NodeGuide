@@ -87,22 +87,27 @@ merge(a, b);
 // => { foo: 'bar', bar: 'baz' }
 ```
 
-[qrcode](https://github.com/soldair/node-qrcode)  二维码生成器
-
-[pm2](https://github.com/Unitech/pm2) Production process manager for Node.js applications with a built-in load balance
-
 [cron](https://github.com/ncb000gt/node-cron)   cron 定时任务
 
-[compression](https://github.com/expressjs/compression)  压缩的中间件
+```
+var CronJob = require('cron').CronJob;
+new CronJob('00 30 11 * * 1-5', function() {
+  console.log('You will see this message every second');
+}, null, true, 'America/Los_Angeles');
+```
+其中，cron格式 ‘秒，分，时，日，月，周 ’，*表示1。
 
-[errorhandle](https://github.com/expressjs/errorhandler)
-错误处理中间件
+[compression](https://github.com/expressjs/compression)  压缩的中间件
 
 [depd](https://github.com/dougwilson/nodejs-depd)  deprecate all the things
 
 
+[qrcode](https://github.com/soldair/node-qrcode)  二维码生成器
+
+
 [lodash](https://github.com/lodash/lodash/)     js工具库 
 [lodash api](https://lodash.com/docs)
+
 
 [async](https://github.com/caolan/async)      异步控制
 
@@ -412,7 +417,7 @@ Super-agent driven library for testing node.js HTTP servers using a fluent API
 
 
 
-## 日志 && 监控
+## 日志 && 监控 && 错误处理
 
 [morgan](https://github.com/expressjs/morgan)
 HTTP request log 中间件
@@ -441,6 +446,32 @@ console.log('Run the trap'.trap); // Drops the bass
 ```
 
 [debug](https://github.com/visionmedia/debug)  对console.log 封装，支持多种颜色输出
+
+[node-notifier](https://github.com/madhums/node-notifier)  处理app级别的通知。可实现邮件通知，apn
+
+[errorhandle](https://github.com/expressjs/errorhandler) 错误处理中间件
+如下，结合node-notifier处理错误信息：
+```
+var errorhandler = require('errorhandler')
+var notifier = require('node-notifier')
+if (process.env.NODE_ENV === 'development') {
+  // only use in development
+  app.use(errorhandler({log: errorNotification}))
+}
+
+function errorNotification(err, str, req) {
+  var title = 'Error in ' + req.method + ' ' + req.url
+  notifier.notify({
+    title: title,
+    message: str
+  })
+}
+```
+
+
+
+[pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡
+
 
 [node-inspector](https://github.com/node-inspector/node-inspector)
 
