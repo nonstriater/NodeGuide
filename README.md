@@ -4,7 +4,7 @@
 作为一个node初学者，发现上来就要跟一堆的node开源库打交道。这里整理一份常用的node库，以及他们的简单介绍和使用。
 
 + 工具
-    - 普通工具
+    - 常用工具
     - 流程控制
 + HTTP 
     - req && resp
@@ -122,9 +122,13 @@ new CronJob('00 30 11 * * 1-5', function() {
 [lodash api](https://lodash.com/docs)
 
 ### 流程控制
-[async](https://github.com/caolan/async)      异步控制
+[async](https://github.com/caolan/async)  异步控制,控制并发
 
 [eventproxy](https://github.com/JacksonTian/eventproxy)  An implementation of task/event based asynchronous pattern
+事件代理，避免事件的深度嵌套回调
+
+[cheerio](https://github.com/cheeriojs/cheerio)    为服务器定制的，JQuery核心实现,  分析网页用。 
+
 
 [after](https://github.com/Raynos/after)
 All the flow control you'll ever need
@@ -247,6 +251,8 @@ request('http://www.google.com', function (error, response, body) {
 })
 ```
 
+[superagent](https://github.com/visionmedia/superagent)  客户端网络请求HTTP模块， 抓取网页 [使用参考](https://cnodejs.org/topic/5378720ed6e2d16149fa16bd)
+
 [accepts](https://github.com/jshttp/accepts)   http(s) header Accept 设置和解析
 
 [content-disposition](https://github.com/jshttp/content-disposition)  http(s) header Content-Disposition 设置和解析
@@ -309,6 +315,8 @@ Override HTTP verbs
 
 
 
+cookie机制是在客户端保持状态的方案，session是服务器保持状态的方案
+
 ### cookie 
 
 [cookie](https://github.com/jshttp/cookie) cookie serialization and parsing for node.js
@@ -347,7 +355,9 @@ Create a session middleware with the given options
 [proxy-addr](https://github.com/jshttp/proxy-addr) 
 Determine address of proxied request
 
+### socket
 
+Socket.io  https://github.com/socketio/socket.io
 
 ### 网络安全
 
@@ -372,6 +382,8 @@ Help secure Express apps with various HTTP headers
 SessionStorage for connect's session middleware
 
 [mongoose](https://github.com/Automattic/mongoose)  MongoDB object modeling designed to work in an asynchronous environment 
+
+[mongoskin](https://github.com/kissjs/node-mongoskin) The promise wrapper for node-mongodb-native
 
 [connect-redis](https://github.com/tj/connect-redis)  redis存储session数据
 
@@ -420,6 +432,7 @@ Super-agent driven library for testing node.js HTTP servers using a fluent API
 
 [fresh](https://github.com/jshttp/fresh) HTTP request freshness testing
 
+[beachmark](https://github.com/bestiejs/benchmark.js) 测试执行时间效率
 
 [coveralls](https://github.com/nickmerwin/node-coveralls)  代码测试覆盖率
 
@@ -482,12 +495,20 @@ function errorNotification(err, str, req) {
 ```
 
 
+[Log.io](https://github.com/NarrativeScience/Log.io) 实时日志监控系统
+
 
 [pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡
 
 
 [node-inspector](https://github.com/node-inspector/node-inspector)
 
+```
+//install
+$ npm install -g node-inspector
+//start debug
+$ node-debug -p <port> app.js
+```
 
 # 联系
 
