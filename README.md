@@ -279,6 +279,29 @@ Range header field parser
 //解析url 编码的body
 bodyParser(urlencoded())
 ```
+其依赖的库有(from package.json)：
+```
+  "dependencies": {
+    "bytes": "2.1.0",
+    "content-type": "~1.0.1",
+    "debug": "~2.2.0",
+    "depd": "~1.1.0",
+    "http-errors": "~1.3.1",
+    "iconv-lite": "0.4.12",
+    "on-finished": "~2.3.0",
+    "qs": "5.1.0",
+    "raw-body": "~2.1.4",
+    "type-is": "~1.6.9"
+  },
+  "devDependencies": {
+    "istanbul": "0.3.21",
+    "methods": "~1.1.1",
+    "mocha": "2.2.5",
+    "supertest": "1.1.0"
+  }
+```
+
+[raw-body](https://github.com/stream-utils/raw-body)  从可读的stream中获取有效的 row body.
 
 [multiparty](https://github.com/andrewrk/node-multiparty/)
 A node.js module for parsing multipart-form data requests which supports streams2
@@ -309,6 +332,19 @@ http.createServer(function(req, res) {
 }).listen(8080);
 ```
 
+
+[multer](https://github.com/expressjs/multer) 文件上传中间件
+```
+var multer = require('multer');
+var uploadingOption = multer({
+  dest: __dirname + '../public/uploads/',
+  // 设定限制，每次最多上传1个文件，文件大小不超过1MB
+  limits: {fileSize: 1000000, files:1},
+});
+
+router.post('/upload', uploadingOption, function(req, res) {
+});
+```
 
 [send](https://github.com/pillarjs/send)
 Send is a library for streaming files from the file system as a http response supporting partial responses (Ranges), conditional-GET negotiation
@@ -351,6 +387,8 @@ Simple cookie-based session middleware
 ```
 app.use(cookieSession({ secret: 'manny is cool' }));
 req.session.count
+req.session.regenerate()
+req.session.destroy()
 ```
 
 
@@ -403,6 +441,16 @@ Help secure Express apps with various HTTP headers
 
 ### redis
 [connect-redis](https://github.com/tj/connect-redis)  redis存储session数据
+```
+var RedisStore = require('connect-redis')(session);
+app.use(session({
+  resave: false, // don't save session if unmodified
+  saveUninitialized: false, // don't create session until something stored
+  secret: 'keyboard cat',
+  store: new RedisStore
+}));
+```
+
 
 [redis](https://github.com/NodeRedis/node_redis) redis client for nodejs
 
@@ -446,14 +494,12 @@ Node canvas is a Cairo backed Canvas implementation for NodeJS
 
 ## 测试
 
-[mocha](https://github.com/mochajs/mocha)
-mocha - simple, flexible, fun javascript test framework for node.js & the browser. (BDD, TDD, QUnit styles via interfaces)
+[mocha](https://github.com/mochajs/mocha) BDD模式测试框架
 
-[should](https://github.com/shouldjs/should.js)
-BDD style assertions for node.js -- test framework agnostic
 
-[supertest](https://github.com/visionmedia/supertest)
-Super-agent driven library for testing node.js HTTP servers using a fluent API
+[should](https://github.com/shouldjs/should.js) BDD 模式断言库
+
+[supertest](https://github.com/visionmedia/supertest) 模拟http request测试
 
 [fresh](https://github.com/jshttp/fresh) HTTP request freshness testing
 
@@ -463,7 +509,7 @@ Super-agent driven library for testing node.js HTTP servers using a fluent API
 
 [istanbul](https://github.com/gotwarlost/istanbul) 代码测试覆盖率
 
-[gruntjs](http://gruntjs.com/)  基于node的自动化任务运行器。对于一些重复的任务比如压缩，编译，单元测试，代码检查，打包发布，可以使用grunt处理
+[gruntjs](http://gruntjs.com/)  基于node的自动化任务运行器。对于一些重复的任务比如压缩，编译，单元测试，代码检查，打包发布，可以使用grunt处理，简化我们的工作
 
 
 ## 错误处理、日志、 监控
@@ -493,7 +539,7 @@ console.log('inverse the color'.inverse); // inverses the color
 console.log('OMG Rainbows!'.rainbow); // rainbow
 console.log('Run the trap'.trap); // Drops the bass
 ```
-![colors](./assets/colors)
+![colors](./assets/colors.png)
 
 [debug](https://github.com/visionmedia/debug)  对console.log 封装，支持多种颜色输出
 
@@ -552,12 +598,15 @@ exports.config = {
 $ npm install -g node-inspector
 //start debug
 $ node-debug -p <port> app.js
+//start node app
+$ node app.js
+//browser and trigger the br to starting debug
 ```
 
 
 ## 入门学习资料
 
-[阮一峰](http://javascript.ruanyifeng.com/nodejs/express.html)
+[阮一峰](http://javascript.ruanyifeng.com/nodejs/express.html)   
 [《Node.js 包教包不会》](https://github.com/alsotang/node-lessons)
 
 # 联系
