@@ -8,15 +8,22 @@
     - 流程控制
     - 系统工具
 + HTTP 
-    - req && resp
-    - cookie 
-    - session && 授权
+    - req 
+    - resp
+    - cookie && session 
+    - 授权
+    - socket
     - 网络安全
 + 数据(库)处理
+    - mysql
+    - redis
+    - mongodb
+    - cache
 + views
+    - 模板(jade,ejs)
 + 测试
-+ 错误处理、日志、 监控  
-
++ 错误处理、日志、监控  
++ 入门学习资料
 
 ## 工具
 
@@ -253,7 +260,6 @@ request('http://www.google.com', function (error, response, body) {
 })
 ```
 
-[superagent](https://github.com/visionmedia/superagent)  客户端网络请求HTTP模块， 抓取网页 [使用参考](https://cnodejs.org/topic/5378720ed6e2d16149fa16bd)
 
 [accepts](https://github.com/jshttp/accepts)   http(s) header Accept 设置和解析
 
@@ -307,6 +313,9 @@ http.createServer(function(req, res) {
 [send](https://github.com/pillarjs/send)
 Send is a library for streaming files from the file system as a http response supporting partial responses (Ranges), conditional-GET negotiation
 
+[superagent](https://github.com/visionmedia/superagent)  客户端网络请求HTTP模块， 抓取网页 [使用参考](https://cnodejs.org/topic/5378720ed6e2d16149fa16bd)
+
+
 [serve-static](https://github.com/expressjs/serve-static)
 Create a new middleware function to serve files from within a given root directory
 
@@ -318,9 +327,11 @@ Override HTTP verbs
 
 [finalhandler](https://github.com/pillarjs/finalhandler)  final http responder
 
+
+### cookie && session
+
 cookie机制是在客户端保持状态的方案，session是服务器保持状态的方案
 
-### cookie 
 
 [cookie](https://github.com/jshttp/cookie) cookie serialization and parsing for node.js
 
@@ -343,8 +354,6 @@ req.session.count
 ```
 
 
-### session && 授权
-
 [express-session](https://github.com/expressjs/session) Express session中间件
 Create a session middleware with the given options
 ```
@@ -358,6 +367,7 @@ app.use(session({
 
 ```
 
+###  授权
 
 [passport](https://github.com/jaredhanson/passport)    登录认证，较少模块耦合
 
@@ -390,8 +400,17 @@ Help secure Express apps with various HTTP headers
 
 ## 数据(库)处理
 
+### mysql
 [mysql](https://github.com/felixge/node-mysql)  mysql协议的node实现
 
+### redis
+[connect-redis](https://github.com/tj/connect-redis)  redis存储session数据
+
+[redis](https://github.com/NodeRedis/node_redis) redis client for nodejs
+
+[ioredis](https://github.com/luin/ioredis) A robust, performance-focused and full-featured Redis client for Node and io.js
+
+### mongodb
 [connect-mongodb](https://github.com/treygriffith/connect-mongodb)
 SessionStorage for connect's session middleware
 
@@ -399,12 +418,7 @@ SessionStorage for connect's session middleware
 
 [mongoskin](https://github.com/kissjs/node-mongoskin) The promise wrapper for node-mongodb-native
 
-[connect-redis](https://github.com/tj/connect-redis)  redis存储session数据
-
-[redis](https://github.com/NodeRedis/node_redis) redis client for nodejs
-
-[ioredis](https://github.com/luin/ioredis) A robust, performance-focused and full-featured Redis client for Node and io.js
-
+### cache
 [memory-cache](https://github.com/ptarjan/node-cache)A simple in-memory cache for nodejs
 
 
@@ -420,7 +434,6 @@ Embedded JavaScript templates for node
 <% } %>
 <% include footer %>
 ```
-
 
 [jade](https://github.com/jadejs/jade) 
 Jade - robust, elegant, feature rich template engine for Node.js 
@@ -452,9 +465,7 @@ Super-agent driven library for testing node.js HTTP servers using a fluent API
 
 [istanbul](https://github.com/gotwarlost/istanbul) 代码测试覆盖率
 
-
 [gruntjs](http://gruntjs.com/)  基于node的自动化任务运行器。对于一些重复的任务比如压缩，编译，单元测试，代码检查，打包发布，可以使用grunt处理
-
 
 
 ## 错误处理、日志、 监控
