@@ -4,8 +4,9 @@
 作为一个node初学者，发现上来就要跟一堆的node开源库打交道。这里整理一份常用的node库，以及他们的简单介绍和使用。
 
 + 工具
-    - 常用工具
+    - 基本工具
     - 流程控制
+    - 系统工具
 + HTTP 
     - req && resp
     - cookie 
@@ -22,8 +23,8 @@
 ### 普通工具
 [utility](https://github.com/node-modules/utility) A collection of useful utilities
 ```
-utils.md5('@Python发烧友');
-utils.sha1('苏千', 'base64');
+utils.md5('@移动开发小冉');
+utils.sha1('nonstriater', 'base64');
 utils.hmac('sha1', 'I am a key', 'hello world');
 utils.base64decode('5L2g5aW977-l', true); 
 ```
@@ -57,6 +58,35 @@ moment().format('lll');  // Oct 5, 2015 7:49 PM
 ```
 更多使用参考 [官方文档](http://momentjs.com/)
 
+[utils-merge](https://github.com/jaredhanson/utils-merge) 合并2个对象的属性
+```
+var a = { foo: 'bar' }
+  , b = { bar: 'baz' };
+
+merge(a, b);
+// => { foo: 'bar', bar: 'baz' }
+```
+
+[cron](https://github.com/ncb000gt/node-cron)   cron 定时任务
+```
+var CronJob = require('cron').CronJob;
+new CronJob('00 30 11 * * 1-5', function() {
+  console.log('You will see this message every second');
+}, null, true, 'America/Los_Angeles');
+```
+其中，cron格式 ‘秒，分，时，日，月，周 ’，*表示1。
+
+[compression](https://github.com/expressjs/compression)  压缩的中间件
+
+[depd](https://github.com/dougwilson/nodejs-depd)  deprecate all the things
+
+[serve-favicon](https://github.com/expressjs/serve-favicon/blob/master/index.js)
+
+[lodash](https://github.com/lodash/lodash/)     js工具库 
+[lodash api](https://lodash.com/docs)
+
+
+### 系统工具
 [nodemailer](https://github.com/andris9/Nodemailer) 邮件发送服务
 ```
 // create reusable transporter object using SMTP transport
@@ -92,34 +122,7 @@ transporter.sendMail(mailOptions, function(error, info){
 ```
 
 
-[utils-merge](https://github.com/jaredhanson/utils-merge) 合并2个对象的属性
-```
-var a = { foo: 'bar' }
-  , b = { bar: 'baz' };
-
-merge(a, b);
-// => { foo: 'bar', bar: 'baz' }
-```
-
-[cron](https://github.com/ncb000gt/node-cron)   cron 定时任务
-
-```
-var CronJob = require('cron').CronJob;
-new CronJob('00 30 11 * * 1-5', function() {
-  console.log('You will see this message every second');
-}, null, true, 'America/Los_Angeles');
-```
-其中，cron格式 ‘秒，分，时，日，月，周 ’，*表示1。
-
-[compression](https://github.com/expressjs/compression)  压缩的中间件
-
-[depd](https://github.com/dougwilson/nodejs-depd)  deprecate all the things
-
 [qrcode](https://github.com/soldair/node-qrcode)  二维码生成器
-
-
-[lodash](https://github.com/lodash/lodash/)     js工具库 
-[lodash api](https://lodash.com/docs)
 
 ### 流程控制
 [async](https://github.com/caolan/async)  异步控制,控制并发
@@ -191,8 +194,7 @@ uuid.v4(); // -> '110ec58a-a0f2-4ac4-8393-c866d813b8d1'
 ```
 
 
-###[escape-html](https://github.com/component/escape-html)  string html转换 
-
+[escape-html](https://github.com/component/escape-html)  string html转换 
 ```
 var escape = require('escape-html');
 var html = escape('foo & bar');
@@ -266,8 +268,11 @@ Range header field parser
 
 [methods](https://github.com/jshttp/methods)   保证http method 都是小写字符串
 
-[body-parser](https://github.com/expressjs/body-parser) multipart body 解析
-
+[body-parser](https://github.com/expressjs/body-parser) multipart body 解析.只负责处理 JSON，Raw，text,URL-encoded body的解析
+```
+//解析url 编码的body
+bodyParser(urlencoded())
+```
 
 [multiparty](https://github.com/andrewrk/node-multiparty/)
 A node.js module for parsing multipart-form data requests which supports streams2
@@ -313,8 +318,6 @@ Override HTTP verbs
 
 [finalhandler](https://github.com/pillarjs/finalhandler)  final http responder
 
-
-
 cookie机制是在客户端保持状态的方案，session是服务器保持状态的方案
 
 ### cookie 
@@ -344,6 +347,17 @@ req.session.count
 
 [express-session](https://github.com/expressjs/session) Express session中间件
 Create a session middleware with the given options
+```
+app.use(session({
+  resave: false, // don't save session if unmodified
+  saveUninitialized: false, // don't create session until something stored
+  secret: 'shhhh, very secret'
+}));
+
+
+
+```
+
 
 [passport](https://github.com/jaredhanson/passport)    登录认证，较少模块耦合
 
@@ -496,6 +510,27 @@ function errorNotification(err, str, req) {
 
 
 [Log.io](https://github.com/NarrativeScience/Log.io) 实时日志监控系统
+```
+1. sudo npm install -g log.io --user "<pc user>"
+2. log.io-server
+3. subl ~/.log.io/harvester.conf . like:
+exports.config = {
+    nodeName: "application_server",
+    logStreams: {
+      apache: [
+        "/var/log/apache2/access.log",
+        "/var/log/apache2/error.log"
+      ]
+    },
+    server: {
+      host: '0.0.0.0',
+      port: 28777
+    }
+  } 
+
+4. log.io-harvester
+5. Browse to http://localhost:28778
+```
 
 
 [pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡
@@ -509,6 +544,11 @@ $ npm install -g node-inspector
 //start debug
 $ node-debug -p <port> app.js
 ```
+
+## 入门学习资料
+
+[阮一峰](http://javascript.ruanyifeng.com/nodejs/express.html)
+[《Node.js 包教包不会》](https://github.com/alsotang/node-lessons)
 
 # 联系
 
