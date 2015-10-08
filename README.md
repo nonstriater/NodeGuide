@@ -330,7 +330,7 @@ Override HTTP verbs
 
 ### cookie && session
 
-cookie机制是在客户端保持状态的方案，session是服务器保持状态的方案
+**cookie机制是在客户端保持状态的方案，session是服务器保持状态的方案**
 
 
 [cookie](https://github.com/jshttp/cookie) cookie serialization and parsing for node.js
@@ -362,9 +362,6 @@ app.use(session({
   saveUninitialized: false, // don't create session until something stored
   secret: 'shhhh, very secret'
 }));
-
-
-
 ```
 
 ###  授权
@@ -381,7 +378,8 @@ Determine address of proxied request
 
 ### socket
 
-Socket.io  https://github.com/socketio/socket.io
+[Socket.io](https://github.com/socketio/socket.io)
+
 
 ### 网络安全
 
@@ -495,6 +493,7 @@ console.log('inverse the color'.inverse); // inverses the color
 console.log('OMG Rainbows!'.rainbow); // rainbow
 console.log('Run the trap'.trap); // Drops the bass
 ```
+![colors](./assets/colors)
 
 [debug](https://github.com/visionmedia/debug)  对console.log 封装，支持多种颜色输出
 
@@ -548,13 +547,13 @@ exports.config = {
 
 
 [node-inspector](https://github.com/node-inspector/node-inspector)
-
 ```
 //install
 $ npm install -g node-inspector
 //start debug
 $ node-debug -p <port> app.js
 ```
+
 
 ## 入门学习资料
 
