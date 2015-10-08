@@ -1,29 +1,29 @@
 
 
 
-作为一个node初学者，发现上来就要跟一堆的node开源库打交道。这里整理一份常用的node库，以及他们的简单介绍和使用。
+作为一个node初学者，发现上来就要跟一堆的node开源库打交道。这里整理一份常用的node库，以及他们的简单介绍和使用。持续更行中...
 
-+ 工具
++ **工具**
     - 基本工具
     - 流程控制
     - 系统工具
-+ HTTP 
++ **HTTP**
     - req 
     - resp
     - cookie && session 
     - 授权
     - socket
     - 网络安全
-+ 数据(库)处理
++ **数据(库)处理**
     - mysql
     - redis
     - mongodb
     - cache
-+ views
++ **views**
     - 模板(jade,ejs)
-+ 测试
-+ 错误处理、日志、监控  
-+ 入门学习资料
++ **测试**
++ **错误处理、日志、监控**
++ **入门学习资料**
 
 ## 工具
 
@@ -496,7 +496,6 @@ Node canvas is a Cairo backed Canvas implementation for NodeJS
 
 [mocha](https://github.com/mochajs/mocha) BDD模式测试框架
 
-
 [should](https://github.com/shouldjs/should.js) BDD 模式断言库
 
 [supertest](https://github.com/visionmedia/supertest) 模拟http request测试
@@ -541,9 +540,7 @@ console.log('Run the trap'.trap); // Drops the bass
 ```
 ![colors](./assets/colors.png)
 
-[debug](https://github.com/visionmedia/debug)  对console.log 封装，支持多种颜色输出
 
-[node-notifier](https://github.com/madhums/node-notifier)  处理app级别的通知。可实现邮件通知，apn
 
 [errorhandle](https://github.com/expressjs/errorhandler) 错误处理中间件
 如下，结合node-notifier处理错误信息：
@@ -588,10 +585,6 @@ exports.config = {
 5. Browse to http://localhost:28778
 ```
 
-
-[pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡
-
-
 [node-inspector](https://github.com/node-inspector/node-inspector)
 ```
 //install
@@ -603,6 +596,12 @@ $ node app.js
 //browser and trigger the br to starting debug
 ```
 
+[debug](https://github.com/visionmedia/debug)  对console.log 封装，支持多种颜色输出
+
+[node-notifier](https://github.com/madhums/node-notifier)  处理app级别的通知。可实现邮件通知，apn
+
+
+[pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡
 
 ## 入门学习资料
 
