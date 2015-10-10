@@ -1,7 +1,10 @@
 
 
+#Node 开源项目分类汇总
 
 作为一个node初学者，发现上来就要跟一堆的node开源库打交道。这里整理一份常用的node库，以及他们的简单介绍和使用。持续更行中...
+
+欢迎大家推荐好的Node开源项目，欢迎star,fork :)
 
 + **工具**
     - 基本工具
@@ -44,6 +47,8 @@ bcrypt.genSalt(10, function(err, salt) {
         // Store hash in your password DB.
     });
 });
+//sync
+var hash = bcrypt.hashSync('B4c0/\/', salt);
 ```
 
 [crypto-js](https://github.com/brix/crypto-js) JavaScript library of crypto standards
@@ -77,7 +82,7 @@ merge(a, b);
 [cron](https://github.com/ncb000gt/node-cron)   cron 定时任务
 ```
 var CronJob = require('cron').CronJob;
-new CronJob('00 30 11 * * 1-5', function() {
+new CronJob('* * * * * *', function() {
   console.log('You will see this message every second');
 }, null, true, 'America/Los_Angeles');
 ```
@@ -438,6 +443,24 @@ Help secure Express apps with various HTTP headers
 
 ### mysql
 [mysql](https://github.com/felixge/node-mysql)  mysql协议的node实现
+```
+var db = mysql.createConnection(config);
+db.connect(handleError);
+db.on('error', handleError);
+```
+这里监听error时间重连数据库
+
+为避免建立mysql连接对内存资源的占用，避免高访问量时数据库内存溢出风险，常使用mysql连接池机制。mysql 连接池的使用如下：
+```
+var mysql = require('mysql');
+var pool  = mysql.createPool(config);
+
+pool.getConnection(function(err, connection) {
+  // Use the connection
+  connection.query( 'SELECT something FROM sometable', function(err, rows) {
+  });
+});
+```
 
 ### redis
 [connect-redis](https://github.com/tj/connect-redis)  redis存储session数据
@@ -485,7 +508,7 @@ Embedded JavaScript templates for node
 Jade - robust, elegant, feature rich template engine for Node.js 
 
 
-[loader](https://github.com/JacksonTian/loader)      静态资源加载工具
+[loader](https://github.com/JacksonTian/loader)  静态资源加载工具,用于发布模式下进行资源压缩和合并
 
 [canvas](https://github.com/Automattic/node-canvas)  图像图片处理库
 Node canvas is a Cairo backed Canvas implementation for NodeJS
@@ -600,12 +623,13 @@ $ node app.js
 
 [node-notifier](https://github.com/madhums/node-notifier)  处理app级别的通知。可实现邮件通知，apn
 
-
 [pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡
+
 
 ## 入门学习资料
 
-[阮一峰](http://javascript.ruanyifeng.com/nodejs/express.html)   
+[nodeclub 源码](https://github.com/cnodejs/nodeclub.git)  这是我学习到的第一个完整的node项目
+[阮一峰 node教程](http://javascript.ruanyifeng.com/nodejs/express.html)   
 [《Node.js 包教包不会》](https://github.com/alsotang/node-lessons)
 
 # 联系
