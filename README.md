@@ -6,7 +6,7 @@
 
 欢迎大家推荐好的Node开源项目，欢迎star,fork :)
 
-+ **工具**
++ [**工具**](#工具)
     - 基本工具
     - 流程控制
     - 系统工具
@@ -628,9 +628,16 @@ $ node app.js
 
 ## 入门学习资料
 
-[nodeclub 源码](https://github.com/cnodejs/nodeclub.git)  这是我学习到的第一个完整的node项目
+[node 资源列表]（https://github.com/sindresorhus/awesome-nodejs）
+[nodeclub 源码](https://github.com/cnodejs/nodeclub.git)  这是我学习到的第一个完整的node项目  
 [阮一峰 node教程](http://javascript.ruanyifeng.com/nodejs/express.html)   
 [《Node.js 包教包不会》](https://github.com/alsotang/node-lessons)
+
+## People
+
+[朴灵](http://github.com/JacksonTian/)
+[阮一峰](http://www.ruanyifeng.com/)
+[alsotang](https://github.com/alsotang/)
 
 # 联系
 
