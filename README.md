@@ -17,17 +17,17 @@
     - 授权
     - socket
     - 网络安全
-+ [**数据(库)处理**](#数据(库)处理)
++ [**数据库处理**](#数据库处理)
     - mysql
     - redis
     - mongodb
     - cache
 + [**Views**](#Views)
     - 模板(jade,ejs)
-+ [**测试**](测试)
-+ [**错误处理、日志、监控**](错误处理、日志、监控)
-+ [**学习资料**](学习资料)
-+ [**People**](People)
++ [**测试**](#测试)
++ [**错误处理、日志、监控**](#错误处理、日志、监控)
++ [**学习资料**](#学习资料)
++ [**People**](#People)
 
 ## 工具
 
@@ -440,7 +440,7 @@ Help secure Express apps with various HTTP headers
 [captchagen](https://github.com/contra/captchagen) 验证码生成器，依赖canvas库
 
 
-## 数据(库)处理
+## 数据库处理
 
 ### mysql
 [mysql](https://github.com/felixge/node-mysql)  mysql协议的node实现
