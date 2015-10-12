@@ -10,23 +10,24 @@
     - 基本工具
     - 流程控制
     - 系统工具
-+ **HTTP**
++ [**HTTP**](#HTTP)
     - req 
     - resp
     - cookie && session 
     - 授权
     - socket
     - 网络安全
-+ **数据(库)处理**
++ [**数据(库)处理**](#数据(库)处理)
     - mysql
     - redis
     - mongodb
     - cache
-+ **views**
++ [**Views**](#Views)
     - 模板(jade,ejs)
-+ **测试**
-+ **错误处理、日志、监控**
-+ **入门学习资料**
++ [**测试**](测试)
++ [**错误处理、日志、监控**](错误处理、日志、监控)
++ [**学习资料**](学习资料)
++ [**People**](People)
 
 ## 工具
 
@@ -626,7 +627,7 @@ $ node app.js
 [pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡
 
 
-## 入门学习资料
+## 学习资料
 
 [node 资源列表]（https://github.com/sindresorhus/awesome-nodejs）
 [nodeclub 源码](https://github.com/cnodejs/nodeclub.git)  这是我学习到的第一个完整的node项目  
