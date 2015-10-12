@@ -10,7 +10,7 @@
     - 基本工具
     - 流程控制
     - 系统工具
-+ [**字符串处理**](##字符串处理)
++ [**字符串处理**](#字符串处理)
 + [**HTTP**](#http)
     - req 
     - resp
@@ -26,7 +26,11 @@
 + [**Views**](#views)
     - 模板(jade,ejs)
 + [**测试**](#测试)
-+ [**错误处理、日志、监控**](#错误处理、日志、监控)
++ [**异常处理**](#异常处理)
+    - 错误处理
+    - 日志
+    - 监控
+    - 调试
 + [**学习资料**](#学习资料)
 + [**People**](#people)
 
@@ -493,7 +497,7 @@ SessionStorage for connect's session middleware
 [memory-cache](https://github.com/ptarjan/node-cache)A simple in-memory cache for nodejs
 
 
-## views
+## Views
 
 [ejs](https://github.com/tj/ejs)
 Embedded JavaScript templates for node
@@ -536,36 +540,9 @@ Node canvas is a Cairo backed Canvas implementation for NodeJS
 [gruntjs](http://gruntjs.com/)  基于node的自动化任务运行器。对于一些重复的任务比如压缩，编译，单元测试，代码检查，打包发布，可以使用grunt处理，简化我们的工作
 
 
-## 错误处理、日志、 监控
+## 异常处理
 
-[morgan](https://github.com/expressjs/morgan)
-HTTP request log 中间件
-
-```
-var logger = require('morgan');
-app.use(logger('dev'));
-```
-
-预定义的格式有：combined,common,dev,short,tiny，比如dev:
-```
-:method :url :status :response-time ms - :res[content-length]
-```
-![morgan_dev](./assets/morgan_dev.png)
-
-
-[colors](https://github.com/Marak/colors.js)  get colors in your node.js console
-```
-var colors = require('colors');
-
-console.log('hello'.green); // outputs green text
-console.log('i like cake and pies'.underline.red) // outputs red underlined text
-console.log('inverse the color'.inverse); // inverses the color
-console.log('OMG Rainbows!'.rainbow); // rainbow
-console.log('Run the trap'.trap); // Drops the bass
-```
-![colors](./assets/colors.png)
-
-
+### 错误处理
 
 [errorhandle](https://github.com/expressjs/errorhandler) 错误处理中间件
 如下，结合node-notifier处理错误信息：
@@ -586,6 +563,39 @@ function errorNotification(err, str, req) {
 }
 ```
 
+
+### 日志
+
+[morgan](https://github.com/expressjs/morgan)
+HTTP request log 中间件
+
+```
+var logger = require('morgan');
+app.use(logger('dev'));
+```
+
+预定义的格式有：combined,common,dev,short,tiny，比如dev:
+```
+:method :url :status :response-time ms - :res[content-length]
+```
+![morgan_dev](./assets/morgan_dev.png)
+
+[colors](https://github.com/Marak/colors.js)  get colors in your node.js console
+```
+var colors = require('colors');
+
+console.log('hello'.green); // outputs green text
+console.log('i like cake and pies'.underline.red) // outputs red underlined text
+console.log('inverse the color'.inverse); // inverses the color
+console.log('OMG Rainbows!'.rainbow); // rainbow
+console.log('Run the trap'.trap); // Drops the bass
+```
+![colors](./assets/colors.png)
+
+[debug](https://github.com/visionmedia/debug)  对console.log 封装，支持多种颜色输出
+
+
+### 监控
 
 [Log.io](https://github.com/NarrativeScience/Log.io) 实时日志监控系统
 ```
@@ -610,6 +620,14 @@ exports.config = {
 5. Browse to http://localhost:28778
 ```
 
+
+[node-notifier](https://github.com/madhums/node-notifier)  处理app级别的通知。可实现邮件通知，apn
+
+[pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡
+
+
+### 调试
+
 [node-inspector](https://github.com/node-inspector/node-inspector)
 ```
 //install
@@ -620,13 +638,6 @@ $ node-debug -p <port> app.js
 $ node app.js
 //browser and trigger the br to starting debug
 ```
-
-[debug](https://github.com/visionmedia/debug)  对console.log 封装，支持多种颜色输出
-
-[node-notifier](https://github.com/madhums/node-notifier)  处理app级别的通知。可实现邮件通知，apn
-
-[pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡
-
 
 ## 学习资料
 
