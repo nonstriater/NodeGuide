@@ -4,7 +4,7 @@
 
 作为一个node初学者，发现上来就要跟一堆的node开源库打交道。这里整理一份常用的node库，以及他们的简单介绍和使用。持续更行中...
 
-欢迎大家推荐好的Node开源项目，欢迎star,fork :)
+>欢迎大家推荐好的Node开源项目，欢迎star,fork :)
 
 + [**工具**](#工具)
     - 基本工具
@@ -641,14 +641,18 @@ $ node app.js
 
 ## 学习资料
 
+[Ghost 博客系统](https://github.com/tryghost/Ghost)  
+[hexo 博客系统](https://github.com/hexojs/hexo/)  
+[nodeclub 源码](https://github.com/cnodejs/nodeclub.git)   
+
 [node 资源列表](https://github.com/sindresorhus/awesome-nodejs)  
-[nodeclub 源码](https://github.com/cnodejs/nodeclub.git)  这是我学习到的第一个完整的node项目  
+这是我学习到的第一个完整的node项目  
 [阮一峰 node教程](http://javascript.ruanyifeng.com/nodejs/express.html)   
 [《Node.js 包教包不会》](https://github.com/alsotang/node-lessons)
 
 ## People
 
-[朴灵](http://github.com/JacksonTian/) 
+[朴灵](http://github.com/JacksonTian/)  
 [阮一峰](http://www.ruanyifeng.com/)  
 [alsotang](https://github.com/alsotang/)  
 
