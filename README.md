@@ -156,6 +156,7 @@ All the flow control you'll ever need
 
 [on-finished](https://github.com/jshttp/on-finished)  Execute a callback when a request closes, finishes, or errors
 
+[Bluebird](https://github.com/petkaantonov/bluebird)  改进异步流程
 
 ## 字符串处理
 
@@ -493,6 +494,15 @@ SessionStorage for connect's session middleware
 
 [mongoskin](https://github.com/kissjs/node-mongoskin) The promise wrapper for node-mongodb-native
 
+### ORM
+
+[bookshelf](https://github.com/tgriesser/bookshelf) ORM for Mysql,Sqlite
+依赖 knex
+
+[knex](https://github.com/tgriesser/knex) 
+
+
+
 ### cache
 [memory-cache](https://github.com/ptarjan/node-cache)A simple in-memory cache for nodejs
 
@@ -643,10 +653,11 @@ $ node app.js
 
 [Ghost 博客系统](https://github.com/tryghost/Ghost)  
 [hexo 博客系统](https://github.com/hexojs/hexo/)  
-[nodeclub 源码](https://github.com/cnodejs/nodeclub.git)   
+[nodeclub 源码](https://github.com/cnodejs/nodeclub.git)这是我学习到的第一个完整的node项目    
 
-[node 资源列表](https://github.com/sindresorhus/awesome-nodejs)  
-这是我学习到的第一个完整的node项目  
+[看知乎](https://github.com/atonasting/zhihuspider)爬虫
+
+[node 资源列表](https://github.com/sindresorhus/awesome-nodejs) 
 [阮一峰 node教程](http://javascript.ruanyifeng.com/nodejs/express.html)   
 [《Node.js 包教包不会》](https://github.com/alsotang/node-lessons)
 
