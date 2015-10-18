@@ -148,6 +148,10 @@ transporter.sendMail(mailOptions, function(error, info){
 [eventproxy](https://github.com/JacksonTian/eventproxy)  An implementation of task/event based asynchronous pattern
 事件代理，避免事件的深度嵌套回调
 
+[Bluebird](https://github.com/petkaantonov/bluebird)  改进异步流程的深层嵌套逻辑
+
+
+
 [cheerio](https://github.com/cheeriojs/cheerio)    为服务器定制的，JQuery核心实现,  分析网页用。 
 
 
@@ -156,7 +160,7 @@ All the flow control you'll ever need
 
 [on-finished](https://github.com/jshttp/on-finished)  Execute a callback when a request closes, finishes, or errors
 
-[Bluebird](https://github.com/petkaantonov/bluebird)  改进异步流程
+
 
 ## 字符串处理
 
@@ -345,6 +349,29 @@ http.createServer(function(req, res) {
 ```
 
 
+[busboy](https://github.com/mscdex/busboy)  formdata处理， 文件上传，表单处理中间件
+```
+var busboy = new Busboy({ headers: req.headers });
+    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+      console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
+      file.on('data', function(data) {
+        console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
+      });
+      file.on('end', function() {
+        console.log('File [' + fieldname + '] Finished');
+      });
+    });
+    busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
+      console.log('Field [' + fieldname + ']: value: ' + inspect(val));
+    });
+    busboy.on('finish', function() {
+      console.log('Done parsing form!');
+      res.writeHead(303, { Connection: 'close', Location: '/' });
+      res.end();
+    });
+    req.pipe(busboy);
+```
+
 [multer](https://github.com/expressjs/multer) 文件上传中间件
 ```
 var multer = require('multer');
@@ -497,10 +524,9 @@ SessionStorage for connect's session middleware
 ### ORM
 
 [bookshelf](https://github.com/tgriesser/bookshelf) ORM for Mysql,Sqlite
-依赖 knex
+基于 knex.js 库
 
 [knex](https://github.com/tgriesser/knex) 
-
 
 
 ### cache
@@ -522,6 +548,15 @@ Embedded JavaScript templates for node
 
 [jade](https://github.com/jadejs/jade) 
 Jade - robust, elegant, feature rich template engine for Node.js 
+
+
+[express-hbs](https://github.com/barc/express-hbs) expresshandlebars模板引擎  
+[handlebars](https://github.com/wycats/handlebars.js) handlebars模板引擎
+```
+{ { argument } }    // 解析为字符串
+{ { { argument } } } // 解析为 HTML
+```
+
 
 
 [loader](https://github.com/JacksonTian/loader)  静态资源加载工具,用于发布模式下进行资源压缩和合并
