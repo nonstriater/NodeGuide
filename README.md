@@ -521,6 +521,8 @@ SessionStorage for connect's session middleware
 
 [mongoskin](https://github.com/kissjs/node-mongoskin) The promise wrapper for node-mongodb-native
 
+[node-mongodb-native](https://github.com/mongodb/node-mongodb-native.git) MongoDB nodeJS驱动
+
 ### ORM
 
 [bookshelf](https://github.com/tgriesser/bookshelf) ORM for Mysql,Sqlite
@@ -556,7 +558,6 @@ Jade - robust, elegant, feature rich template engine for Node.js
 { { argument } }    // 解析为字符串
 { { { argument } } } // 解析为 HTML
 ```
-
 
 
 [loader](https://github.com/JacksonTian/loader)  静态资源加载工具,用于发布模式下进行资源压缩和合并
@@ -642,6 +643,14 @@ console.log('Run the trap'.trap); // Drops the bass
 
 ### 监控
 
+[supervisor](https://github.com/petruisfan/node-supervisor.git) 监控代码的改动，重启node.js, 实现动态调试。适合开发环境
+
+[forever](https://github.com/foreverjs/forever) 管理多个站点，监控能力弱
+
+[pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡。适合网站访问量大，需要完整监控的web
+
+[nodemon](https://github.com/remy/nodemon) 监控代码的改动,自动重启node服务。
+
 [Log.io](https://github.com/NarrativeScience/Log.io) 实时日志监控系统
 ```
 1. sudo npm install -g log.io --user "<pc user>"
@@ -668,10 +677,10 @@ exports.config = {
 
 [node-notifier](https://github.com/madhums/node-notifier)  处理app级别的通知。可实现邮件通知，apn
 
-[pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡
 
 
 ### 调试
+
 
 [node-inspector](https://github.com/node-inspector/node-inspector)
 ```
