@@ -455,6 +455,8 @@ Determine address of proxied request
 
 ### socket
 
+[ws]()
+
 [Socket.io](https://github.com/socketio/socket.io)
 
 
@@ -647,9 +649,10 @@ console.log('Run the trap'.trap); // Drops the bass
 
 [forever](https://github.com/foreverjs/forever) 管理多个站点，监控能力弱
 
+[nodemon](https://github.com/remy/nodemon) 监控代码的改动,自动重启node服务。
+
 [pm2](https://github.com/Unitech/pm2)  node 进程管理方案，负载均衡。适合网站访问量大，需要完整监控的web
 
-[nodemon](https://github.com/remy/nodemon) 监控代码的改动,自动重启node服务。
 
 [Log.io](https://github.com/NarrativeScience/Log.io) 实时日志监控系统
 ```
