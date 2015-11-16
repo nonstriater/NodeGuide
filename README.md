@@ -455,7 +455,7 @@ Determine address of proxied request
 
 ### socket
 
-[ws]()
+[ws](https://github.com/websockets/ws)  Node.js中 WebSocket协议实现
 
 [Socket.io](https://github.com/socketio/socket.io)
 
@@ -609,6 +609,12 @@ function errorNotification(err, str, req) {
     message: str
   })
 }
+```
+
+[jshint](https://github.com/jshint/jshint)  静态代码分析工具，默认使用 .jshintrc 文件作为配置文件
+```
+npm install -g jshint
+jshint app.js
 ```
 
 
