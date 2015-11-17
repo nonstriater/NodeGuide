@@ -31,6 +31,7 @@
     - 日志
     - 监控
     - 调试
++ [**开源项目**](#开源项目)
 + [**学习资料**](#学习资料)
 + [**People**](#people)
 
@@ -723,6 +724,52 @@ $ node-debug -p <port> app.js
 $ node app.js
 //browser and trigger the br to starting debug
 ```
+
+## 开源项目
+
+[short](https://github.com/edwardhotchkiss/short)  Promise-based Node.js URL Shortener backed by Mongoose.js
+短域名服务，使用node和mongoose搭建。
+
+下面的代码，搭建一个提供短域名跳转的http服务
+```
+var http = require("http");
+var mongoose = require("mongoose");
+var short = require("short");
+
+mongoose.connect("mongodb://localhost/short");
+
+var app = http.createServer(function(request, response) {
+    var hash = request.url.slice(1);
+    if (request.url === "/") {
+        response.writeHead(200, { "Content-Type" : "text/html" });
+        response.write("URL not found!");
+        response.end();
+    } else {
+        short.get(hash, function(error, shortURLObject) {
+            if (error) {
+                console.error(error);
+            } else {
+                if (shortURLObject) {
+                    var URL = shortURLObject[0].URL;
+                    response.writeHead(302, {
+                        "Location" : URL
+                    });
+                    response.end();
+                } else {
+                    response.writeHead(200, { "Content-Type" : "text/html" });
+                    response.write("URL not found!");
+                    response.end();
+                }
+            };
+        });
+    }
+});
+
+app.listen(8080);
+console.log("> Open http://localhost:8080/kQ4c");
+```
+
+
 
 ## 学习资料
 
