@@ -144,6 +144,28 @@ transporter.sendMail(mailOptions, function(error, info){
 
 ### 流程控制
 [async](https://github.com/caolan/async)  异步控制,控制并发
+```
+async.forEach();
+async.forEachLimit() 
+async.map() 过滤集合
+async.filter() 异步操作对集合过滤
+async.reject() 结果与filter()相反
+async.reduce() 
+async.detect() 得到集合里满足条件的第一个元素
+
+async.some() 至少一个元素满足指定条件，callback得到true
+async.every()  每个元素都满足指定条件，callback得到true
+
+async.series() 顺序执行函数
+async.paralle() 并行执行多个函数
+
+async.whilst()
+async.until()
+
+async.waterfall() 前一个函数返回值作为后一个函数的输入
+async.queue() 创建串行队列
+```
+
 
 [eventproxy](https://github.com/JacksonTian/eventproxy)  An implementation of task/event based asynchronous pattern
 事件代理，避免事件的深度嵌套回调
@@ -571,7 +593,7 @@ Node canvas is a Cairo backed Canvas implementation for NodeJS
 
 ## 测试
 
-[mocha](https://github.com/mochajs/mocha) BDD模式测试框架
+[mocha](https://github.com/mochajs/mocha) BDD模式测试框架,支持多种assert，支持同步和异步测试
 
 [should](https://github.com/shouldjs/should.js) BDD 模式断言库
 
