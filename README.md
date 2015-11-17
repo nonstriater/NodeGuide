@@ -539,14 +539,67 @@ app.use(session({
 [ioredis](https://github.com/luin/ioredis) A robust, performance-focused and full-featured Redis client for Node and io.js
 
 ### mongodb
-[connect-mongodb](https://github.com/treygriffith/connect-mongodb)
-SessionStorage for connect's session middleware
+
+[node-mongodb-native](https://github.com/mongodb/node-mongodb-native.git) MongoDB nodeJS驱动
+```
+var mongoClient = require('mongodb').MongoClient
+  , assert = require('assert');
+
+var url = 'mongodb://localhost:27017/mgdbdemo';
+mongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+  console.log("Connected correctly to server");
+  db.close();
+});
+```
+
+比如：updateOnce() 更新文档
+```
+var updateDocument = function(db, callback) {
+  // Get the documents collection
+  var collection = db.collection('documents');
+  // Update document where a is 2, set b equal to 1
+  collection.updateOne({ a : 2 }
+    , { $set: { b : 1 } }, function(err, result) {
+    assert.equal(err, null);
+    assert.equal(1, result.result.n);
+    console.log("Updated the document with the field a equal to 2");
+    callback(result);
+  });  
+}
+```
+
 
 [mongoose](https://github.com/Automattic/mongoose)  MongoDB object modeling designed to work in an asynchronous environment 
 
+```
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/my_database');
+
+var ReplySchema = new Schema({
+  content: { type: String },
+  topic_id: { type: ObjectId},
+  author_id: { type: ObjectId },
+  reply_id: { type: ObjectId },
+  create_at: { type: Date, default: Date.now },
+  update_at: { type: Date, default: Date.now },
+  content_is_html: { type: Boolean },
+  ups: [Schema.Types.ObjectId],
+  deleted: {type: Boolean, default: false},
+});
+
+var reply = mongoose.model('Reply', ReplySchema);
+
+save()
+find()
+
+```
+
+
 [mongoskin](https://github.com/kissjs/node-mongoskin) The promise wrapper for node-mongodb-native
 
-[node-mongodb-native](https://github.com/mongodb/node-mongodb-native.git) MongoDB nodeJS驱动
+[connect-mongodb](https://github.com/treygriffith/connect-mongodb)
+SessionStorage for connect's session middleware
 
 ### ORM
 
@@ -769,15 +822,14 @@ app.listen(8080);
 console.log("> Open http://localhost:8080/kQ4c");
 ```
 
-
-
-## 学习资料
-
-[Ghost 博客系统](https://github.com/tryghost/Ghost)  
-[hexo 博客系统](https://github.com/hexojs/hexo/)  
+  
 [nodeclub 源码](https://github.com/cnodejs/nodeclub.git)这是我学习到的第一个完整的node项目    
 
+[Ghost 博客系统](https://github.com/tryghost/Ghost)  
+[hexo 博客系统](https://github.com/hexojs/hexo/)
 [看知乎](https://github.com/atonasting/zhihuspider)爬虫
+
+## 学习资料
 
 [node 资源列表](https://github.com/sindresorhus/awesome-nodejs) 
 [阮一峰 node教程](http://javascript.ruanyifeng.com/nodejs/express.html)   
