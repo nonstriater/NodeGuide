@@ -18,6 +18,7 @@
     - 授权
     - socket
     - 网络安全
+    - 网络工具
 + [**数据库处理**](#数据库处理)
     - mysql
     - redis
@@ -472,9 +473,7 @@ app.use(session({
 
 ### 授权
 
-[passport](https://github.com/jaredhanson/passport)    登录认证，较少模块耦合
-
-最基本的username/password 验证
+[passport](https://github.com/jaredhanson/passport)    登录认证，较少模块耦合,使用策略模式通过插件的方式支持多种验证方式。最基本的username/password 验证
 ```
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
@@ -494,7 +493,7 @@ passport.use(new LocalStrategy(
   }
 ));
 ```
-如果前段表单里面usernameFiled/passwordField 需要自定义，可以在LocalStrategy()构造函数里面传一个option作为第一个参数
+如果前段表单里面usernameFiled/passwordField 需要自定义，可以在LocalStrategy()构造函数里面传一个option作为第一个参数：
 
 ```
 passport.use(new LocalStrategy({
@@ -507,7 +506,21 @@ passport.use(new LocalStrategy({
 ));
 ```
 
-OAuth 验证
+常用api解释：
+
+```
+passport.initialize()
+passport.session()
+passport.serializeUser(function(user, done) {})  user对象中的数据序列化到session中
+passport.deserializeUser(function(id, done) {})  从用户提交的session中提取sessionId，然后从数据库中查询
+
+passport.authenticate(name,option,callback)
+
+```
+
+
+[passport-github](https://github.com/jaredhanson/passport-github) passport github授权插件
+
 ```
 var passport = require('passport')
   , GithubStrategy = require('passport-github').Strategy;
@@ -526,29 +539,6 @@ passport.use(new GithubStrategy({
   }
 ));
 ```
-
-
-```
-passport.initialize()
-passport.session()
-passport.serializeUser(function(user, done) {})  user对象中的数据序列化到session中
-passport.deserializeUser(function(id, done) {})  从用户提交的session中提取sessionId，然后从数据库中查询
-
-passport.authenticate(name,option,callback)
-
-```
-
-
-
-
-
-[passport-github](https://github.com/jaredhanson/passport-github) github授权
-
-[vhost](https://github.com/expressjs/vhost)   虚拟域名主机。 ip下可以部署多个不同域名站点
-
-
-[proxy-addr](https://github.com/jshttp/proxy-addr) 
-Determine address of proxied request
 
 ### socket
 
@@ -570,6 +560,16 @@ A node.js package that provides an Express/Connect middleware to enable Cross Or
 Help secure Express apps with various HTTP headers
 
 [captchagen](https://github.com/contra/captchagen) 验证码生成器，依赖canvas库
+
+
+
+### 网络工具
+
+[vhost](https://github.com/expressjs/vhost)   虚拟域名主机。 ip下可以部署多个不同域名站点
+
+
+[proxy-addr](https://github.com/jshttp/proxy-addr)  Determine address of proxied request
+
 
 
 ## 数据库处理
