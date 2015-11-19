@@ -26,7 +26,10 @@
     - cache
 + [**Views**](#views)
     - 模板(jade,ejs)
+    - 控件处理
 + [**测试**](#测试)
+    - 测试工具
+    - CI
 + [**异常处理**](#异常处理)
     - 错误处理
     - 日志
@@ -227,9 +230,7 @@ marked(markdownString, function (err, content) {
   if (err) throw err;
   console.log(content);
 });
-
 ```
-
 
 [node-uuid](https://github.com/broofa/node-uuid)  Generate RFC-compliant UUIDs in JavaScript
 ```
@@ -689,6 +690,7 @@ SessionStorage for connect's session middleware
 
 ## Views
 
+### 模板
 [ejs](https://github.com/tj/ejs)
 Embedded JavaScript templates for node
 
@@ -705,16 +707,19 @@ Jade - robust, elegant, feature rich template engine for Node.js
 
 
 [express-hbs](https://github.com/barc/express-hbs) expresshandlebars模板引擎  
+
 [handlebars](https://github.com/wycats/handlebars.js) handlebars模板引擎
 ```
 { { argument } }    // 解析为字符串
 { { { argument } } } // 解析为 HTML
 ```
 
+[Juicer](https://github.com/PaulGuo/Juicer) JS模板引擎
+
+
+### 控件处理
 
 [loader](https://github.com/JacksonTian/loader)  静态资源加载工具,用于发布模式下进行资源压缩和合并
-
-
 
 [canvas](https://github.com/Automattic/node-canvas)  图像图片处理库
 Node canvas is a Cairo backed Canvas implementation for NodeJS
@@ -723,6 +728,7 @@ Node canvas is a Cairo backed Canvas implementation for NodeJS
 
 ## 测试
 
+### 测试工具
 [mocha](https://github.com/mochajs/mocha) BDD模式测试框架,支持多种assert，支持同步和异步测试
 
 [should](https://github.com/shouldjs/should.js) BDD 模式断言库
@@ -736,6 +742,9 @@ Node canvas is a Cairo backed Canvas implementation for NodeJS
 [coveralls](https://github.com/nickmerwin/node-coveralls)  代码测试覆盖率
 
 [istanbul](https://github.com/gotwarlost/istanbul) 代码测试覆盖率
+
+
+### CI
 
 [gruntjs](http://gruntjs.com/)  基于node的自动化任务运行器。对于一些重复的任务比如压缩，编译，单元测试，代码检查，打包发布，可以使用grunt处理，简化我们的工作
 
