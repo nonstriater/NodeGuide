@@ -95,7 +95,7 @@ new CronJob('* * * * * *', function() {
 ```
 其中，cron格式 ‘秒，分，时，日，月，周 ’，*表示1。
 
-[compression](https://github.com/expressjs/compression)  压缩的中间件
+[compression](https://github.com/expressjs/compression)  压缩的中间件,支持gzip和deflate
 
 [depd](https://github.com/dougwilson/nodejs-depd)  deprecate all the things
 
@@ -315,8 +315,11 @@ Range header field parser
 
 [body-parser](https://github.com/expressjs/body-parser) multipart body 解析.只负责处理 JSON，Raw，text,URL-encoded body的解析
 ```
-//解析url 编码的body
+//解析url 编码的body application/x-www-form-urlencoded
 bodyParser(urlencoded())
+
+// parse application/json, limit指定request不超过1MB
+app.use(bodyParser.json({limit: '1mb'}));
 ```
 其依赖的库有(from package.json)：
 ```
@@ -421,7 +424,12 @@ Create a new middleware function to serve files from within a given root directo
 Infer the content-type of a request
 
 [method-override](https://github.com/expressjs/method-override)
-Override HTTP verbs
+前端浏览器的form只能使用GET或POST方法，后后端只有一个对应的PUT的API。这时，我们需要用method-override将POST/GET改成PUT
+
+```
+app.use(require('method-override')());
+```
+
 
 [finalhandler](https://github.com/pillarjs/finalhandler)  final http responder
 
@@ -429,7 +437,6 @@ Override HTTP verbs
 ### cookie && session
 
 **cookie机制是在客户端保持状态的方案，session是服务器保持状态的方案**
-
 
 [cookie](https://github.com/jshttp/cookie) cookie serialization and parsing for node.js
 
@@ -441,7 +448,6 @@ app.use(cookieParser('my secret here'));
 res.cookie('remember', 1, { maxAge: minute });
 res.clearCookie('remember');
 ```
-
 
 [cookie-session](https://github.com/expressjs/cookie-session)
 Simple cookie-based session middleware
@@ -464,9 +470,77 @@ app.use(session({
 }));
 ```
 
-###  授权
+### 授权
 
 [passport](https://github.com/jaredhanson/passport)    登录认证，较少模块耦合
+
+最基本的username/password 验证
+```
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function(err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: '用户名不存在.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: '密码不匹配.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+```
+如果前段表单里面usernameFiled/passwordField 需要自定义，可以在LocalStrategy()构造函数里面传一个option作为第一个参数
+
+```
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'passwd'
+  },
+  function(username, password, done) {
+    // ...
+  }
+));
+```
+
+OAuth 验证
+```
+var passport = require('passport')
+  , GithubStrategy = require('passport-github').Strategy;
+  
+//passport设置部分 
+passport.use(new GithubStrategy({
+    clientID: GITHUB_CLIENT_ID,
+    clientSecret: GITHUB_CLIENT_SECRET,
+    callbackURL: "http://www.example.com/auth/github/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate(..., function(err, user) {
+      if (err) { return done(err); }
+      done(null, user);
+    });
+  }
+));
+```
+
+
+```
+passport.initialize()
+passport.session()
+passport.serializeUser(function(user, done) {})  user对象中的数据序列化到session中
+passport.deserializeUser(function(id, done) {})  从用户提交的session中提取sessionId，然后从数据库中查询
+
+passport.authenticate(name,option,callback)
+
+```
+
+
+
+
 
 [passport-github](https://github.com/jaredhanson/passport-github) github授权
 
@@ -639,6 +713,8 @@ Jade - robust, elegant, feature rich template engine for Node.js
 
 
 [loader](https://github.com/JacksonTian/loader)  静态资源加载工具,用于发布模式下进行资源压缩和合并
+
+
 
 [canvas](https://github.com/Automattic/node-canvas)  图像图片处理库
 Node canvas is a Cairo backed Canvas implementation for NodeJS
