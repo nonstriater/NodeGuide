@@ -180,7 +180,12 @@ async.queue() 创建串行队列
 
 
 [cheerio](https://github.com/cheeriojs/cheerio)    为服务器定制的，JQuery核心实现,  分析网页用。 
-
+```
+var $ = cheerio.load(sres.text);
+$('#topic_list .topic_title').each(function(idx,element){
+  ...
+});
+```
 
 [after](https://github.com/Raynos/after)
 All the flow control you'll ever need
@@ -417,6 +422,13 @@ router.post('/upload', uploadingOption, function(req, res) {
 Send is a library for streaming files from the file system as a http response supporting partial responses (Ranges), conditional-GET negotiation
 
 [superagent](https://github.com/visionmedia/superagent)  客户端网络请求HTTP模块， 抓取网页 [使用参考](https://cnodejs.org/topic/5378720ed6e2d16149fa16bd)
+```
+superagent.get('https://cnodejs.org/')
+    .end(function (err, sres) {
+    ...
+
+  });
+```
 
 
 [serve-static](https://github.com/expressjs/serve-static)
