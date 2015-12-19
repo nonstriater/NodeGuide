@@ -35,6 +35,7 @@
     - 日志
     - 监控
     - 调试
++ [**框架**](#框架)    
 + [**开源项目**](#开源项目)
 + [**学习资料**](#学习资料)
 + [**People**](#people)
@@ -874,6 +875,50 @@ $ node-debug -p <port> app.js
 $ node app.js
 //browser and trigger the br to starting debug
 ```
+
+## 框架
+
+[Express](https://github.com/strongloop/express.git)
+
+
+[Sails.js](https://github.com/balderdashy/sails.git) MVC框架
+
+![sailsjs.org](http://sailsjs.org)
+
+[KOA](https://github.com/koajs/koa)  MVC框架，团队来自Express
+
+![koajs.com](http://koajs.com)
+
+
+[Meteor](https://github.com/meteor/meteor)  是Node.js上最出色的全栈框架，有庞大社区支持和文档。
+
+![emteor.com](http://emteor.com)
+
+
+[Derby](https://github.com/derbyjs/derby) 全栈框架
+
+![derbyjs.com](http://derbyjs.com)
+
+
+[Flatiron](https://github.com/flatiron/flatiron.git)
+
+![http://flatironjs.org](http://flatironjs.org)
+
+
+[Hapi](https://github.com/hapijs/hapi.git)  不依赖Express的node.js框架
+
+![http://hapijs.com](http://hapijs.com)
+
+
+[Mean](https://github.com/linnovate/mean)
+
+
+[Mojito](https://github.com/yahoo/mojito)
+
+
+[SocketStream](https://github.com/socketstream/socketstream)
+
+
 
 ## 开源项目
 
